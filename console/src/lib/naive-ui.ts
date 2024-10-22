@@ -14,6 +14,7 @@ const defaultTheme: GlobalThemeOverrides = {
   },
   Menu: {
     itemHeight: '36px',
+    fontSize: 13,
   },
   Tooltip: {
     color: 'white',

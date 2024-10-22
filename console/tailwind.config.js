@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       height: {
-        header: 'var(--oi-navbar-height)',
+        header: 'var(--learn-header-height)',
+        navbar: 'var(--learn-tab-bar-height)',
       },
       colors: {
-        background: 'var(--oi-background)',
+        background: 'var(--learn-background)',
       },
     },
   },

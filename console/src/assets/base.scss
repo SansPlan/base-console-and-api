@@ -5,9 +5,10 @@
 @import url('./fonts/noto-sans-sc/index.scss');
 
 :root {
-  --oi-navbar-height: 54px;
+  --learn-header-height: 54px;
+  --learn-tab-bar-height: 40px;
 
-  --oi-background: '#f5f5f7';
+  --learn-background: '#f5f5f7';
 }
 
 body {
@@ -32,14 +33,14 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .bg-dot-grid {
-  --oi-bg-size: 20px;
-  background-size: var(--oi-bg-size) var(--oi-bg-size);
+  --learn-bg-size: 20px;
+  background-size: var(--learn-bg-size) var(--learn-bg-size);
   background-image: radial-gradient(#ceced2 1px, transparent 1px);
 }

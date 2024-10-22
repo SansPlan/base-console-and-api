@@ -5,8 +5,18 @@
     "title": "欢迎页",
     "componentPath": "Index",
     "requireAuth": true,
-    "showAside": true,
+    "showAside": false,
     "icon": "mdi:robot-outline",
+    "parentName": "oi.main"
+  },
+  {
+    "routerPath": "/dashboard",
+    "name": "oi.dashboard",
+    "title": "数据面板",
+    "componentPath": "Dashboard",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "solar:pie-chart-bold",
     "parentName": "oi.main"
   },
   {

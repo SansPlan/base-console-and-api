@@ -74,6 +74,14 @@ const qqGroup: QQGroupItem[] = [
           </p>
           <br />
           <p class="flex items-center gap-3">
+            <router-link to="/dashboard">
+              <n-button type="primary">
+                <template #icon>
+                  <Icon icon="streamline:startup-solid" width="14" />
+                </template>
+                开始使用
+              </n-button>
+            </router-link>
             <WebUpdateLog />
             <n-button quaternary>
               <template #icon>

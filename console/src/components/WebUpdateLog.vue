@@ -3,7 +3,7 @@ const showLog = ref<boolean>(false)
 </script>
 
 <template>
-  <n-button type="primary" @click="showLog = true">
+  <n-button quaternary @click="showLog = true">
     <template #icon>
       <Icon icon="mingcute:timeline-fill" />
     </template>

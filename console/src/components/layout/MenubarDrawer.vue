@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppConfig } from '@/stores/useAppConfig'
-import LayoutAside from './LayoutAside.vue'
+import { Menubar } from '.'
 
 const route = useRoute()
 const appConfig = useAppConfig()
@@ -26,7 +26,7 @@ function toggleMenu() {
       <template #header>
         <h3 class="text-base font-semibold">菜单</h3>
       </template>
-      <LayoutAside />
+      <Menubar />
     </n-drawer-content>
   </n-drawer>
 </template>

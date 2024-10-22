@@ -11,7 +11,7 @@ const appConfig = useAppConfig()
 
 // 侧边栏折叠
 const isCollapsed = computed(() => appConfig.collapse)
-const collapsedIconSize = computed(() => (appConfig.collapse ? 20 : 18))
+const collapsedIconSize = computed(() => (appConfig.collapse ? 20 : 16))
 
 // 当前路由的 name
 const activeRouteName = computed(() => route.name as string)
@@ -29,7 +29,7 @@ function renderMenuLabel(option: MenuOption) {
       { default: () => option.label },
     )
   } else {
-    return h('span', option.label)
+    return h('span', option.label as string)
   }
 }
 
@@ -45,7 +45,7 @@ function renderMenuIcon(option: MenuOption) {
 function resolveMenu(tree: ObjectAny | ObjectAny[]) {
   return (Array.isArray(tree) ? tree : [tree])
     .map(item => {
-      const newItem = {
+      const newItem: MenuOption & { _meta: ObjectAny } = {
         key: item.name,
         label: item.title,
         _meta: item,
