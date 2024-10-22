@@ -1,8 +1,11 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 export const useAppConfig = defineStore('appConfig', () => {
+  const route = useRoute()
+
   // 网站名称
   const siteName = 'LearnOnce'
+  const isHomePage = computed(() => route.path === '/')
 
   // 侧边栏折叠
   const collapse = ref<boolean>(false)
@@ -34,6 +37,7 @@ export const useAppConfig = defineStore('appConfig', () => {
 
   return {
     siteName,
+    isHomePage,
     collapse,
     toggleCollapse,
     sidebarCollapseWidth,

@@ -28,6 +28,8 @@ function renderMenuLabel(option: MenuOption) {
       },
       { default: () => option.label },
     )
+  } else {
+    return h('span', option.label)
   }
 }
 
@@ -42,11 +44,17 @@ function renderMenuIcon(option: MenuOption) {
 // 将路由树转为菜单树可使用树
 function resolveMenu(tree: ObjectAny | ObjectAny[]) {
   return (Array.isArray(tree) ? tree : [tree])
-    .map(item => ({
-      key: item.name,
-      label: item.title,
-      _meta: item,
-    }))
+    .map(item => {
+      const newItem = {
+        key: item.name,
+        label: item.title,
+        _meta: item,
+      }
+      if (item.children && item.children.length) {
+        newItem['children'] = resolveMenu(item.children)
+      }
+      return newItem
+    })
     .filter(item => item._meta.showAside)
 }
 </script>

@@ -41,29 +41,32 @@ const qqGroup: QQGroupItem[] = [
 
 <template>
   <main>
-    <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-grid-line">
+    <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-dot-grid">
       <div class="max-w-6xl px-4 mx-auto lg:px-8">
-        <h1 class="flex items-center gap-3 text-2xl lg:text-4xl">
+        <h1 class="flex items-center gap-3 text-2xl font-semibold">
           <Icon icon="mdi:applause" class="text-orange-500" />
           <span>欢迎回来！</span>
-          <span class="font-semibold">Guest</span>
+          <span>Guest</span>
         </h1>
-        <div class="space-y-1 lg:px-12 mt-7">
-          <p>请容我简单为你介绍一下 <span class="font-semibold">OiWeb Console</span>。</p>
-          <p>该管理后台是我结合多家中小公司后台管理系统开发经历所作，采用 monorepo 模式，可一键运行，部署也极为方便，简单易上手。</p>
+        <div class="space-y-1 lg:px-9 mt-7">
+          <p>
+            请容我简单为你介绍一下 <span class="font-semibold">{{ appConfig.siteName }} Console</span>。
+          </p>
+          <p>该管理后台是我结合多家中小公司后台管理系统开发经历所作，通过脚本可一键运行，部署也极为方便，简单易上手。</p>
           <p>在项目开发上，只有日志会插手业务，因为需要为你记录并在某个时候回顾。但请注意，日志事件在现阶段需要开发者手动添加。</p>
           <p>
-            如果需要做出更强大的系统，<span class="font-semibold">OiWeb</span> 支持深度定制。如果在使用或定制过程中有什么问题，可以通过 Discord / QQ群 咨询。
+            如果需要做出更强大的系统，<span class="font-semibold">{{ appConfig.siteName }}</span> 支持深度定制。如果在使用或定制过程中有什么问题，可以通过
+            Discord / QQ群 咨询。
           </p>
           <br />
           <p class="flex items-center gap-1 mb-2">
             <span>开源仓库 <em>(MIT 协议)</em>：</span>
-            <a href="">
+            <a href="" target="_blank">
               <n-button quaternary circle>
                 <Icon icon="simple-icons:gitee" width="20" class="text-red-600" />
               </n-button>
             </a>
-            <a href="">
+            <a href="https://github.com/LearnOnce/learn-permission-control-admin" target="_blank">
               <n-button quaternary circle>
                 <Icon icon="simple-icons:github" width="20" />
               </n-button>
@@ -116,11 +119,3 @@ const qqGroup: QQGroupItem[] = [
     </footer>
   </main>
 </template>
-
-<style scoped lang="scss">
-.bg-grid-line {
-  --oi-bg-size: 20px;
-  background-size: var(--oi-bg-size) var(--oi-bg-size);
-  background-image: radial-gradient(#ceced2 1px, transparent 1px);
-}
-</style>

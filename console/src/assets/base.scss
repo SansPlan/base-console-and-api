@@ -37,3 +37,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-dot-grid {
+  --oi-bg-size: 20px;
+  background-size: var(--oi-bg-size) var(--oi-bg-size);
+  background-image: radial-gradient(#ceced2 1px, transparent 1px);
+}

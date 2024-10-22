@@ -10,7 +10,7 @@ const router = createRouter({
       meta: {
         requireAuth: true,
       },
-      component: () => import('@/layouts/default.vue'),
+      component: () => import('@/layouts/Default.vue'),
       children: [],
     },
     {

@@ -14,9 +14,49 @@
     "name": "oi.notification",
     "title": "消息通知",
     "componentPath": "Notification",
-    "requireAuth": false,
+    "requireAuth": true,
     "showAside": false,
     "icon": "hugeicons:notification-01",
     "parentName": "oi.main"
+  },
+  {
+    "routerPath": "/permission",
+    "name": "oi.permission",
+    "title": "权限管理",
+    "componentPath": "View",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "icon-park-outline:permissions",
+    "parentName": "oi.main"
+  },
+  {
+    "routerPath": "/menu",
+    "name": "oi.permission.menu",
+    "title": "菜单按钮",
+    "componentPath": "permission/Menu",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "bi:menu-button",
+    "parentName": "oi.permission"
+  },
+  {
+    "routerPath": "/role",
+    "name": "oi.permission.role",
+    "title": "角色管理",
+    "componentPath": "permission/Role",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:role-binding-outlined",
+    "parentName": "oi.permission"
+  },
+  {
+    "routerPath": "/role-group",
+    "name": "oi.permission.roleGroup",
+    "title": "角色组",
+    "componentPath": "permission/RoleGroup",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:cluster-role",
+    "parentName": "oi.permission"
   }
 ]

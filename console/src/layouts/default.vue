@@ -13,6 +13,7 @@ const appConfig = useAppConfig()
     </n-layout-header>
     <n-layout position="absolute" class="!top-[var(--oi-navbar-height)]" has-sider>
       <n-layout-sider
+        v-if="!appConfig.isHomePage"
         bordered
         v-model:collapsed="appConfig.collapse"
         :native-scrollbar="false"
@@ -29,7 +30,7 @@ const appConfig = useAppConfig()
       </n-layout-sider>
       <n-layout-content :naive-scrollbar="false" embedded :native-scrollbar="false">
         <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
+          <transition name="page" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
@@ -37,3 +38,15 @@ const appConfig = useAppConfig()
     </n-layout>
   </n-layout>
 </template>
+
+<style scoped lang="scss">
+.page-enter-active,
+.page-leave-active {
+  @apply transition duration-300;
+}
+
+.page-enter-from,
+.page-leave-to {
+  @apply -translate-y-4 opacity-0;
+}
+</style>

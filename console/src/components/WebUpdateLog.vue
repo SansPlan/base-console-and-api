@@ -10,7 +10,7 @@ const showLog = ref<boolean>(false)
     更新日志
   </n-button>
 
-  <n-drawer v-model:show="showLog" class="!w-[740px] max-w-[80vw]">
+  <n-drawer v-model:show="showLog" class="!w-[720px] max-w-[80vw]">
     <n-drawer-content closable header-style="--n-header-padding: 14px 18px">
       <template #header>
         <h3 class="text-base font-semibold">更新日志</h3>

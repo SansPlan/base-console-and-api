@@ -28,7 +28,8 @@ export const useAuthorize = defineStore('authorize', {
   actions: {
     // 获取授权菜单
     async getAuthorizeMenu() {
-      this.menu = convertListToTree(routes)
+      this.menu = convertListToTree(routes, 'oi.main')
+      console.log(this.menu)
     },
     // 安装授权菜单
     withInstallMenu(router: Router) {
@@ -53,6 +54,7 @@ export const useAuthorize = defineStore('authorize', {
 })
 
 // 递归授权路由树到路由
+const asyncViewsRoute = import.meta.glob('@/views/**/*.vue')
 function recursionMenuTree(router: Router, tree: ObjectAny | ObjectAny[], parentName: string) {
   tree = Array.isArray(tree) ? tree : [tree]
   tree.forEach((item: ObjectAny) => {
@@ -60,7 +62,7 @@ function recursionMenuTree(router: Router, tree: ObjectAny | ObjectAny[], parent
       path: formatPath(item.routerPath),
       name: item.name,
       meta: item,
-      component: () => import(`@/views/${formatPath(item.componentPath)}.vue`),
+      component: asyncViewsRoute[`/src/views/${formatPath(item.componentPath)}.vue`] || asyncViewsRoute['/src/views/ComponentError.vue'],
     })
     if ('children' in item) {
       recursionMenuTree(router, item.children, item.name)

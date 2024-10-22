@@ -10,7 +10,7 @@ watch(route, () => (showMenu.value = false))
 
 function toggleMenu() {
   showMenu.value = !showMenu.value
-  if (showMenu.value) {
+  if (showMenu.value && appConfig.collapse) {
     appConfig.toggleCollapse()
   }
 }

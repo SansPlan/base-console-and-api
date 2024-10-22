@@ -17,7 +17,7 @@ const appConfig = useAppConfig()
       <WebLogo :size="24" />
       <span class="mx-0.5 -mt-0.5 text-base">{{ appConfig.siteName }}</span>
     </router-link>
-    <LayoutToggleSidebar />
+    <LayoutToggleSidebar v-if="!appConfig.isHomePage" />
     <LayoutMobileAside />
     <span class="ml-auto" />
     <AppNotification />
