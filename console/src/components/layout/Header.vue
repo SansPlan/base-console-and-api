@@ -20,7 +20,7 @@ const appConfig = useAppConfig()
 
       <MenubarToggle v-if="!appConfig.isHomePage()" />
       <template v-else>
-        <router-link to="/dashboard">
+        <router-link to="/dashboard" class="hidden lg:inline">
           <n-button quaternary circle>
             <Icon icon="mage:dashboard-2" width="18" />
           </n-button>

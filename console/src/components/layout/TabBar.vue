@@ -54,7 +54,7 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div class="sticky inset-x-0 top-0 hidden bg-white border-b h-navbar border-zinc-100 lg:block">
+  <div class="sticky inset-x-0 top-0 hidden overflow-hidden bg-white border-b h-navbar border-zinc-200 lg:block">
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
         <div class="flex items-center divide-x divide-zinc-100 h-navbar" ref="scrollContainerRef">

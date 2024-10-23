@@ -73,7 +73,7 @@ const qqGroup: QQGroupItem[] = [
             </a>
           </p>
           <br />
-          <p class="flex items-center gap-3">
+          <p class="flex flex-wrap items-center gap-3">
             <router-link to="/dashboard">
               <n-button type="primary">
                 <template #icon>
