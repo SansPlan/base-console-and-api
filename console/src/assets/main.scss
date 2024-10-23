@@ -1,6 +1,7 @@
 @import url('./base.scss');
 
 // naive-ui
+.n-menu .n-submenu,
 .n-menu .n-menu-item {
   margin-top: 2px;
 }
@@ -24,5 +25,5 @@
 
 .page-enter-from,
 .page-leave-to {
-  @apply -translate-y-4 opacity-0;
+  @apply translate-y-4 opacity-0;
 }

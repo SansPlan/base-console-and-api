@@ -13,14 +13,20 @@ interface AuthorizeState {
   installRoutes: boolean
 }
 
-export const useAuthorize = defineStore('authorize', {
-  state: () =>
-    <AuthorizeState>{
-      token: 'test',
-      userInfo: {},
-      menu: [],
-      installRoutes: false,
-    },
+interface AuthroizeActions {
+  // 获取授权菜单
+  getAuthorizeMenu: () => void
+  // 安装授权菜单
+  withInstallMenu: (router: Router) => Promise<boolean>
+}
+
+export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, AuthroizeActions>('authorize', {
+  state: () => ({
+    token: 'test',
+    userInfo: {},
+    menu: [],
+    installRoutes: false,
+  }),
   getters: {
     TOKEN: state => state.token,
     MENU: state => state.menu,
@@ -29,10 +35,9 @@ export const useAuthorize = defineStore('authorize', {
     // 获取授权菜单
     async getAuthorizeMenu() {
       this.menu = convertListToTree(routes, 'oi.main')
-      console.log(this.menu)
     },
     // 安装授权菜单
-    withInstallMenu(router: Router) {
+    async withInstallMenu(router: Router) {
       return new Promise<boolean>(async (resolve, reject) => {
         // 将路由树追加到路由
         if (!this.menu.length) {

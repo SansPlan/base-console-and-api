@@ -29,7 +29,10 @@ const appConfig = useAppConfig()
         <TabBar v-if="appConfig.showTabBar" />
         <router-view v-slot="{ Component }">
           <transition name="page" mode="out-in">
-            <component :is="Component" />
+            <template v-if="appConfig.refreshTabPage">
+              <p>正在刷新</p>
+            </template>
+            <component v-else :is="Component" />
           </transition>
         </router-view>
       </n-layout-content>

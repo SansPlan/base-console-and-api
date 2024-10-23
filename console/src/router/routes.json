@@ -68,5 +68,45 @@
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.permission"
+  },
+  {
+    "routerPath": "/setting",
+    "name": "oi.setting",
+    "title": "系统设置",
+    "componentPath": "View",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:cluster-role",
+    "parentName": "oi.main"
+  },
+  {
+    "routerPath": "/dict",
+    "name": "oi.setting.dict",
+    "title": "字典管理",
+    "componentPath": "system/dict",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:cluster-role",
+    "parentName": "oi.setting"
+  },
+  {
+    "routerPath": "/params",
+    "name": "oi.setting.params",
+    "title": "全局参数管理",
+    "componentPath": "system/params",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:cluster-role",
+    "parentName": "oi.setting"
+  },
+  {
+    "routerPath": "/cache",
+    "name": "oi.setting.cache",
+    "title": "缓存管理",
+    "componentPath": "system/cache",
+    "requireAuth": true,
+    "showAside": true,
+    "icon": "eos-icons:cluster-role",
+    "parentName": "oi.setting"
   }
 ]

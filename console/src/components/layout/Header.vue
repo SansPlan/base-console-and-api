@@ -17,12 +17,25 @@ const appConfig = useAppConfig()
         <WebLogo :size="20" />
         <span class="mx-0.5 -mt-0.5 text-sm">{{ appConfig.siteName }}</span>
       </router-link>
+
       <MenubarToggle v-if="!appConfig.isHomePage()" />
+      <template v-else>
+        <router-link to="/dashboard">
+          <n-button quaternary circle>
+            <Icon icon="mage:dashboard-2" width="18" />
+          </n-button>
+        </router-link>
+      </template>
+
       <MenubarDrawer />
+
       <span class="ml-auto" />
+
       <AppNotification />
       <AppConfig />
+
       <n-divider vertical />
+
       <AccountPopover />
     </header>
   </n-layout-header>

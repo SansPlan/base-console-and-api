@@ -15,6 +15,8 @@ export interface AppConfigState {
   currentTabIndex: number
   // 标签页列表
   tabBarItems: TabItem[]
+  // 标签页组件刷新
+  refreshTabPage: boolean
 }
 
 // 标签页
@@ -28,6 +30,8 @@ export interface TabItem {
 export interface AppConfigActions {
   // 当前路由是否为首页
   isHomePage: () => boolean
+  // 标签页刷新事件
+  onRefreshTabPage: () => void
   // 菜单栏伸缩事件
   toggleCollapse: () => void
   // 追加标签页
@@ -61,11 +65,18 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     showTabBar: true,
     currentTabIndex: 0,
     tabBarItems: [welcomeItem],
+    refreshTabPage: false,
   }),
   actions: {
     isHomePage() {
       const route = useRoute()
       return route.path === '/'
+    },
+    onRefreshTabPage() {
+      this.refreshTabPage = true
+      setTimeout(() => {
+        this.refreshTabPage = false
+      }, 100)
     },
     toggleCollapse() {
       this.collapse = !this.collapse
@@ -81,14 +92,17 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     },
     removeTabItem(index: number) {
       this.tabBarItems.splice(index, 1)
-      if (this.tabBarItems.length - 1 > index) {
-        this.currentTabIndex += 1
+      if (this.tabBarItems.length === 1) {
+        this.currentTabIndex = 0
       } else {
-        this.currentTabIndex -= 1
+        if (index <= this.currentTabIndex) {
+          this.currentTabIndex -= 1
+        }
       }
     },
     removeRightTabItems(index: number) {
-      this.tabBarItems.splice(index, this.tabBarItems.length - index)
+      const nextIndex = index + 1
+      this.tabBarItems.splice(nextIndex, this.tabBarItems.length - nextIndex)
     },
     removeOtherTabItems(index: number) {
       const item = this.tabBarItems[index]

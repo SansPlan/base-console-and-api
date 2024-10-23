@@ -10,23 +10,37 @@ const showLog = ref<boolean>(false)
     更新日志
   </n-button>
 
-  <n-drawer v-model:show="showLog" class="!w-[720px] max-w-[80vw]">
-    <n-drawer-content closable header-style="--n-header-padding: 14px 18px">
+  <n-drawer v-model:show="showLog" class="!w-[580px] max-w-[80vw]">
+    <n-drawer-content closable header-style="--n-header-padding: 12px 18px" header-class="h-header">
       <template #header>
-        <h3 class="text-base font-semibold">更新日志</h3>
+        <h3 class="text-sm font-semibold">更新日志</h3>
       </template>
-      <n-timeline>
-        <n-timeline-item title="v0.0.1" time="2024/10/21">
-          <ul class="pl-4 list-decimal">
-            <li>测试时间线</li>
+      <div class="divide-y divide-zinc-100">
+        <section class="py-2 space-y-2">
+          <h3 class="flex items-center gap-2 text-base font-semibold">
+            <Icon icon="ic:outline-tips-and-updates" class="text-blue-500" width="18" />
+            <span>v0.0.1</span>
+          </h3>
+          <ul class="pl-10 list-decimal">
+            <li>初始化项目</li>
+            <li>初始化项目</li>
+            <li>初始化项目</li>
+            <li>初始化项目</li>
           </ul>
-        </n-timeline-item>
-        <n-timeline-item title="v0.0.1" time="2024/10/21">
-          <ul class="pl-4 list-decimal">
-            <li>测试时间线</li>
+        </section>
+        <section class="py-2 space-y-2">
+          <h3 class="flex items-center gap-2 text-base font-semibold">
+            <Icon icon="ic:outline-tips-and-updates" class="text-blue-500" width="18" />
+            <span>v0.0.1</span>
+          </h3>
+          <ul class="pl-10 list-decimal">
+            <li>初始化项目</li>
+            <li>初始化项目</li>
+            <li>初始化项目</li>
+            <li>初始化项目</li>
           </ul>
-        </n-timeline-item>
-      </n-timeline>
+        </section>
+      </div>
     </n-drawer-content>
   </n-drawer>
 </template>
