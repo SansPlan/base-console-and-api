@@ -41,6 +41,11 @@ body {
 
 .bg-dot-grid {
   --learn-bg-size: 20px;
+  --learn-radial-color: #ceced2;
   background-size: var(--learn-bg-size) var(--learn-bg-size);
-  background-image: radial-gradient(#ceced2 1px, transparent 1px);
+  background-image: radial-gradient(var(--learn-radial-color) 1px, transparent 1px);
+}
+
+.dark .bg-dot-grid {
+  --learn-radial-color: #52525b;
 }

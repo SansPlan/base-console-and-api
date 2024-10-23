@@ -6,7 +6,7 @@ const route = useRoute()
   <main class="px-4 py-12 lg:p-44 bg-dot-grid">
     <h2 class="flex flex-wrap items-center font-semibold">
       <span class="text-3xl">未找到组件：</span>
-      <small class="p-1.5 rounded text-lg bg-white">/src/views/{{ route.meta.componentPath }}.vue</small>
+      <small class="p-1.5 rounded text-lg bg-white dark:bg-black">/src/views/{{ route.meta.componentPath }}.vue</small>
     </h2>
     <div class="my-5">
       <p>请根据以下常见问题进行筛查：</p>

@@ -14,12 +14,13 @@ const defaultTheme: GlobalThemeOverrides = {
   },
   Menu: {
     itemHeight: '36px',
-    fontSize: 13,
   },
   Tooltip: {
-    color: 'white',
-    textColor: 'black',
     boxShadow: '0 3px 6px -4px rgba(0, 0, 0, .12), 0 0px 8px 0 rgba(0, 0, 0, .08), 0 5px 16px 4px rgba(0, 0, 0, .05)',
+  },
+  Popover: {
+    fontSize: '13px',
+    boxShadow: '0 3px 6px -4px rgba(0, 0, 0, .12), 0 0px 8px 0 rgba(0, 0, 0, .08), 0 5px 10px 4px rgba(0, 0, 0, .05)',
   },
 }
 const localStorageKey = import.meta.env.VITE_META_PROJECT_NAME + '_appThemeColor'

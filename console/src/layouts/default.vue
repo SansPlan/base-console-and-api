@@ -26,7 +26,9 @@ const appConfig = useAppConfig()
         <Menubar />
       </n-layout-sider>
       <n-layout-content :naive-scrollbar="false" embedded :native-scrollbar="false">
-        <TabBar v-if="appConfig.showTabBar" />
+        <transition name="fade">
+          <TabBar v-if="appConfig.showTabBar" />
+        </transition>
         <router-view v-slot="{ Component }">
           <transition name="page" mode="out-in">
             <template v-if="appConfig.refreshTabPage">

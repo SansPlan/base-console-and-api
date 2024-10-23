@@ -1,4 +1,8 @@
+export type SystemThemeMode = 'light' | 'dark' | 'system'
+
 export interface AppConfigState {
+  // 本站主题
+  themeMode: SystemThemeMode
   // 网站名称，在 logo 旁边那个
   siteName: string
   // 菜单栏伸缩态
@@ -11,8 +15,8 @@ export interface AppConfigState {
   menubarTriggerStyle: ObjectAny
   // 标签栏
   showTabBar: boolean
-  // 当前标签下表
-  currentTabIndex: number
+  // 当前标签key
+  currentTabKey: string | number
   // 标签页列表
   tabBarItems: TabItem[]
   // 标签页组件刷新
@@ -55,6 +59,7 @@ export const welcomeItem: TabItem = {
 
 export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppConfigActions>('appConfig', {
   state: () => ({
+    themeMode: 'system',
     siteName: 'LearnOnce',
     collapse: false,
     menubarCollapseWidth: 52,
@@ -63,7 +68,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       top: '28px',
     },
     showTabBar: true,
-    currentTabIndex: 0,
+    currentTabKey: welcomeItem.to.name,
     tabBarItems: [welcomeItem],
     refreshTabPage: false,
   }),
@@ -82,21 +87,21 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       this.collapse = !this.collapse
     },
     pushTabItem(route: TabItem) {
-      const findIndex = this.tabBarItems.findIndex(item => item.to.name === route.to.name)
-      if (findIndex === -1) {
+      const findItem = this.tabBarItems.find(item => item.to.name === route.to.name)
+      if (!findItem) {
         this.tabBarItems.push(route)
-        this.currentTabIndex = this.tabBarItems.length - 1
+        this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].to.name
       } else {
-        this.currentTabIndex = findIndex
+        this.currentTabKey = findItem.to.name
       }
     },
     removeTabItem(index: number) {
       this.tabBarItems.splice(index, 1)
       if (this.tabBarItems.length === 1) {
-        this.currentTabIndex = 0
+        this.currentTabKey = welcomeItem.to.name
       } else {
-        if (index <= this.currentTabIndex) {
-          this.currentTabIndex -= 1
+        if (index > this.tabBarItems.length - 1) {
+          this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].to.name
         }
       }
     },
@@ -107,11 +112,12 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     removeOtherTabItems(index: number) {
       const item = this.tabBarItems[index]
       this.tabBarItems = [welcomeItem, item]
-      this.currentTabIndex = 1
+      this.currentTabKey = item.to.name
     },
     removeAllTabItems() {
       this.tabBarItems = [welcomeItem]
-      this.currentTabIndex = 0
+      this.currentTabKey = welcomeItem.to.name
     },
   },
+  persist: true,
 })

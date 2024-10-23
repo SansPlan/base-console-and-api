@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WebUpdateLog from './WebUpdateLog.vue'
+import WebUpdateLog from './LearnUpdateLog.vue'
 
 import { useAppConfig } from '@/stores/useAppConfig'
 
@@ -7,11 +7,6 @@ interface CloudActivity {
   title: string
   badge: string
   href: string
-}
-
-interface QQGroupItem {
-  code: number
-  isFull: boolean
 }
 
 const appConfig = useAppConfig()
@@ -31,6 +26,10 @@ const cloudServiceActivity: CloudActivity[] = [
   },
 ]
 
+interface QQGroupItem {
+  code: number
+  isFull: boolean
+}
 const qqGroup: QQGroupItem[] = [
   {
     code: 701470295,
@@ -44,11 +43,11 @@ const qqGroup: QQGroupItem[] = [
     <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-dot-grid">
       <div class="max-w-6xl px-4 mx-auto lg:px-8">
         <h1 class="flex items-center gap-3 text-2xl font-semibold">
-          <Icon icon="mdi:applause" class="text-orange-500" />
           <span>欢迎回来！</span>
           <span>Guest</span>
+          <Icon icon="mdi:applause" class="text-orange-500" />
         </h1>
-        <div class="space-y-1 lg:px-9 mt-7">
+        <div class="space-y-1 mt-7">
           <p>
             请容我简单为你介绍一下 <span class="font-semibold">{{ appConfig.siteName }} Console</span>。
           </p>
@@ -109,7 +108,7 @@ const qqGroup: QQGroupItem[] = [
     <section class="max-w-6xl px-4 py-2 mx-auto space-y-4 lg:p-8">
       <h3 class="text-xl font-semibold">云服务优惠推荐</h3>
       <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        <li v-for="item in cloudServiceActivity" :key="item.href" class="flex flex-col p-3 transition border rounded hover:shadow-lg">
+        <li v-for="item in cloudServiceActivity" :key="item.href" class="flex flex-col p-3 transition border rounded dark:border-zinc-700 hover:shadow-lg">
           <div class="flex-grow mb-4">
             <p>{{ item.title }}</p>
           </div>

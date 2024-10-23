@@ -62,7 +62,7 @@ function resolveMenu(tree: ObjectAny | ObjectAny[]) {
 <template>
   <n-menu
     :value="activeRouteName"
-    :indent="16"
+    :indent="18"
     :collapsed="isCollapsed"
     :collapsed-width="appConfig.sidebarCollapseWidth"
     :options="resolveMenu(authorize.MENU)"

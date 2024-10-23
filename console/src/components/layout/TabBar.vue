@@ -2,16 +2,17 @@
 import { useAppConfig, type TabItem } from '@/stores/useAppConfig'
 import TabBarItem from './TabBarItem.vue'
 import type { DropdownOption } from 'naive-ui'
+import { useSortable } from '@vueuse/integrations/useSortable'
 
 const route = useRoute()
 const router = useRouter()
 const appConfig = useAppConfig()
 
 watch(
-  () => appConfig.currentTabIndex,
+  () => appConfig.currentTabKey,
   () => {
-    const currentItem = appConfig.tabBarItems[appConfig.currentTabIndex]
-    if (currentItem.to.name !== route.name) {
+    const currentItem = appConfig.tabBarItems.find(item => item.to.name === appConfig.currentTabKey)
+    if (currentItem && currentItem.to.name !== route.name) {
       router.push(currentItem.to)
     }
   },
@@ -38,6 +39,9 @@ function handleScroll(e: WheelEvent) {
   el.style.transform = `translateX(-${transformX}px)`
 }
 
+// 支持标签拖拽
+useSortable(scrollContainerRef, appConfig.tabBarItems)
+
 // navbar 右侧按钮下拉菜单及事件触发
 const options: DropdownOption[] = [{ label: '全部关闭', key: 'closeAll' }]
 // 右键下拉菜单事件
@@ -54,23 +58,23 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div class="sticky inset-x-0 top-0 hidden overflow-hidden bg-white border-b h-navbar border-zinc-200 lg:block">
+  <div class="sticky inset-x-0 top-0 hidden overflow-hidden bg-white border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
-        <div class="flex items-center divide-x divide-zinc-100 h-navbar" ref="scrollContainerRef">
-          <TabBarItem
-            v-for="(item, index) in appConfig.tabBarItems"
-            :key="item.label"
-            :tab="item"
-            :no-closable="item.to.name.includes('welcome')"
-            :is-active="index === appConfig.currentTabIndex"
-            @close="() => appConfig.removeTabItem(index)"
-            @close-other="() => appConfig.removeOtherTabItems(index)"
-            @close-right-tabs="() => appConfig.removeRightTabItems(index)"
-            @close-all="() => appConfig.removeAllTabItems()"
-            @refresh="() => appConfig.onRefreshTabPage()"
-            @select="handleSelectItem"
-          />
+        <div class="flex items-center divide-x divide-zinc-100 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
+          <div v-for="(item, index) in appConfig.tabBarItems" :key="item.to.name">
+            <TabBarItem
+              :tab="item"
+              :no-closable="item.to.name.includes('welcome')"
+              :is-active="item.to.name === appConfig.currentTabKey"
+              @close="() => appConfig.removeTabItem(index)"
+              @close-other="() => appConfig.removeOtherTabItems(index)"
+              @close-right-tabs="() => appConfig.removeRightTabItems(index)"
+              @close-all="() => appConfig.removeAllTabItems()"
+              @refresh="() => appConfig.onRefreshTabPage()"
+              @select="handleSelectItem"
+            />
+          </div>
         </div>
       </div>
       <div class="flex items-center flex-shrink-0 px-2">
