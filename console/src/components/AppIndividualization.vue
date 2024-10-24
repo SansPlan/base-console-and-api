@@ -20,20 +20,20 @@ const toggleShowConfig = useToggle(showConfig)
   </n-tooltip>
 
   <n-modal v-model:show="showConfig">
-    <div class="p-12 bg-white dark:bg-zinc-800 rounded shadow w-[760px]">
-      <div class="flex gap-3">
-        <div class="flex-grow space-y-2">
-          <h3 class="flex items-center gap-2">
-            <Icon icon="icon-park-outline:setting-config" width="22" inline class="dark:text-zinc-100" />
-            <span class="-mt-0.5 text-lg font-semibold">应用设置</span>
-          </h3>
-          <p>即时生效，该设置仅限于当前浏览器</p>
-        </div>
-        <div class="flex-shrink-0">
-          <n-button quaternary size="small" @click="toggleShowConfig()">
-            <Icon icon="line-md:close" width="18" class="dark:text-zinc-200" />
-          </n-button>
-        </div>
+    <div
+      class="p-6 lg:p-12 bg-white dark:bg-zinc-800 rounded-2xl rounded-bl-none rounded-br-none lg:rounded-bl-2xl lg:rounded-br-2xl mt-5 mb-0 lg:mb-5 shadow w-full max-w-[760px]"
+    >
+      <div class="sticky z-50 flex justify-end top-6 lg:top-12">
+        <n-button secondary circle @click="toggleShowConfig()" class="sticky text-white bg-zinc-600">
+          <Icon icon="line-md:close" width="18" class="dark:text-zinc-200" />
+        </n-button>
+      </div>
+      <div class="space-y-2">
+        <h3 class="flex items-center gap-2">
+          <Icon icon="icon-park-outline:setting-config" width="22" inline class="dark:text-zinc-100" />
+          <span class="-mt-0.5 text-lg font-semibold">应用设置</span>
+        </h3>
+        <p>即时生效，该设置仅限于当前浏览器</p>
       </div>
       <div class="mt-12 space-y-8 text-sm">
         <div class="space-y-3">
@@ -45,7 +45,7 @@ const toggleShowConfig = useToggle(showConfig)
         </div>
         <div class="space-y-3">
           <p class="text-sm font-semibold">左侧菜单栏宽度</p>
-          <div class="flex items-center gap-4">
+          <div class="flex flex-wrap items-center gap-4">
             <div class="flex items-center gap-3">
               <label>收起宽度</label>
               <n-input-number v-model:value="appConfig.menubarCollapseWidth" class="w-32" />
@@ -69,6 +69,7 @@ const toggleShowConfig = useToggle(showConfig)
               { label: '暗色', value: 'dark' },
               { label: '跟随系统', value: 'system' },
             ]"
+            class="w-32"
           />
         </div>
         <div class="space-y-3">

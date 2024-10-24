@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WebUpdateLog from './LearnUpdateLog.vue'
+import { LearnOnceUpdateLog } from '.'
 
 import { useAppConfig } from '@/stores/useAppConfig'
 
@@ -81,7 +81,7 @@ const qqGroup: QQGroupItem[] = [
                 开始使用
               </n-button>
             </router-link>
-            <WebUpdateLog />
+            <LearnOnceUpdateLog />
             <n-button quaternary>
               <template #icon>
                 <Icon icon="logos:discord-icon" />

@@ -39,6 +39,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  @apply transition;
+}
+
+a:hover {
+  @apply text-blue-500;
+}
+
 .bg-dot-grid {
   --learn-bg-size: 20px;
   --learn-radial-color: #ceced2;

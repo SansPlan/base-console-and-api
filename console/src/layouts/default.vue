@@ -34,7 +34,7 @@ const appConfig = useAppConfig()
             <template v-if="appConfig.refreshTabPage">
               <p>正在刷新</p>
             </template>
-            <component v-else :is="Component" />
+            <component v-else :is="Component" :data-tabbar="appConfig.showTabBar" />
           </transition>
         </router-view>
       </n-layout-content>

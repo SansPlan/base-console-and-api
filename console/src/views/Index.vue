@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SystemWelcomePage from '@/components/LearnWelcomePage.vue'
+import { LearnOnceWelcome } from '@/components/learn-once'
 </script>
 
 <template>
-  <SystemWelcomePage />
+  <LearnOnceWelcome />
 </template>
