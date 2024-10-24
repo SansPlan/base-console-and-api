@@ -3,17 +3,10 @@ import { zhCN, dateZhCN } from 'naive-ui'
 import { useThemeColor } from '@/composables/useThemeColor'
 
 const { theme, themeOverrides } = useThemeColor()
-watch(
-  themeOverrides,
-  () => {
-    console.log('ThemeOverrides Changed: ', themeOverrides.value)
-  },
-  { deep: true },
-)
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themeOverrides" :theme="theme">
+  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="theme" :theme-overrides="themeOverrides">
     <RouterView />
   </n-config-provider>
 </template>

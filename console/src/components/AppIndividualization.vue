@@ -5,7 +5,7 @@ import { useAppConfig } from '@/stores/useAppConfig'
 import { useThemeColor } from '@/composables/useThemeColor'
 
 const appConfig = useAppConfig()
-const { themeMode } = useThemeColor()
+const { themeMode, theme } = useThemeColor()
 
 const showConfig = ref<boolean>(false)
 const toggleShowConfig = useToggle(showConfig)
@@ -26,7 +26,7 @@ const toggleShowConfig = useToggle(showConfig)
       class="p-6 lg:p-12 bg-white dark:bg-zinc-800 rounded-2xl rounded-bl-none rounded-br-none lg:rounded-bl-2xl lg:rounded-br-2xl mt-5 mb-0 lg:mb-5 shadow w-full max-w-[760px]"
     >
       <div class="sticky z-50 flex justify-end top-6 lg:top-12">
-        <n-button secondary circle @click="toggleShowConfig()" class="sticky text-white bg-zinc-600">
+        <n-button secondary circle @click="toggleShowConfig()" class="sticky text-white bg-zinc-600 focus:bg-zinc-600">
           <Icon icon="line-md:close" width="18" class="dark:text-zinc-200" />
         </n-button>
       </div>
@@ -64,6 +64,7 @@ const toggleShowConfig = useToggle(showConfig)
             <p>需要注意的是，在暗色模式下，主题色不能够很好的进行适配。</p>
             <p>后续可能会在某个版本更新这个问题，当然在你有解决方案的时候，也可以为开源作出贡献。</p>
             <p>{{ themeMode }}</p>
+            <p class="truncate">{{ theme }}</p>
           </div>
           <n-select
             v-model:value="themeMode"
