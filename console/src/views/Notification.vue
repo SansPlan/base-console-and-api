@@ -5,13 +5,13 @@ const messageDetail = ref<MessageItem | null>(null)
 </script>
 
 <template>
-  <main>
-    <div class="sticky inset-x-0 top-0 flex items-center gap-3 px-3 lg:hidden h-navbar bg-zinc-50">
+  <main class="h-pageHeight data-[tabbar=true]:h-pageHeight2 flex flex-col">
+    <div class="flex items-center gap-3 px-3 lg:hidden h-navbar bg-zinc-50">
       <NotificationDrawer @select="(item: MessageItem) => (messageDetail = item)" />
     </div>
-    <div class="h-pageHeight data-[tabbar=true]:h-pageHeight2 flex lg:gap-3">
+    <div class="flex flex-grow overflow-hidden lg:gap-3">
       <NotificationList class="hidden lg:block" @select="(item: MessageItem) => (messageDetail = item)" />
-      <div class="flex-grow bg-white border-l border-l-zinc-100">
+      <n-scrollbar class="flex-grow bg-white border-l border-l-zinc-100">
         <n-empty v-if="!messageDetail" description="未选择消息" class="p-32" />
         <template v-else>
           <div class="p-4 lg:p-8">
@@ -28,7 +28,7 @@ const messageDetail = ref<MessageItem | null>(null)
             <div>{{ messageDetail.content }}</div>
           </div>
         </template>
-      </div>
+      </n-scrollbar>
     </div>
   </main>
 </template>
