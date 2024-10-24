@@ -1,11 +1,13 @@
 import { useAuthorize } from '@/stores/useAuthorize'
 import type { Router } from 'vue-router'
-import { loadingBar } from '@/lib/naive-ui'
+// import { loadingBar } from '@/lib/naive-ui'
+import { useThemeColor } from '@/composables/useThemeColor'
 import { useAppConfig } from '@/stores/useAppConfig'
 
 export const LOGIN_PAGE = 'oi.login'
 
 export const useGuard = (router: Router) => {
+  const { loadingBar } = useThemeColor()
   router.beforeEach(async (to, from) => {
     loadingBar.start()
 
@@ -29,7 +31,9 @@ export const useGuard = (router: Router) => {
     }
   })
 
-  router.afterEach(() => loadingBar.finish())
+  router.afterEach(() => {
+    loadingBar.finish()
+  })
 
   return router
 }

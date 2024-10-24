@@ -4,7 +4,8 @@
     "name": "oi.welcome",
     "title": "欢迎页",
     "componentPath": "Index",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": false,
     "icon": "mdi:robot-outline",
     "parentName": "oi.main"
@@ -14,7 +15,8 @@
     "name": "oi.dashboard",
     "title": "数据面板",
     "componentPath": "Dashboard",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "solar:pie-chart-bold",
     "parentName": "oi.main"
@@ -24,7 +26,8 @@
     "name": "oi.notification",
     "title": "消息通知",
     "componentPath": "Notification",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": false,
     "icon": "hugeicons:notification-01",
     "parentName": "oi.main"
@@ -34,7 +37,8 @@
     "name": "oi.permission",
     "title": "权限管理",
     "componentPath": "View",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "icon-park-outline:permissions",
     "parentName": "oi.main"
@@ -44,7 +48,8 @@
     "name": "oi.permission.menu",
     "title": "菜单按钮",
     "componentPath": "permission/Menu",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "bi:menu-button",
     "parentName": "oi.permission"
@@ -54,7 +59,8 @@
     "name": "oi.permission.role",
     "title": "角色管理",
     "componentPath": "permission/Role",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:role-binding-outlined",
     "parentName": "oi.permission"
@@ -64,7 +70,8 @@
     "name": "oi.permission.roleGroup",
     "title": "角色组",
     "componentPath": "permission/RoleGroup",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.permission"
@@ -74,7 +81,8 @@
     "name": "oi.setting",
     "title": "系统设置",
     "componentPath": "View",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.main"
@@ -84,7 +92,8 @@
     "name": "oi.setting.dict",
     "title": "字典管理",
     "componentPath": "system/dict",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"
@@ -94,7 +103,8 @@
     "name": "oi.setting.params",
     "title": "全局参数管理",
     "componentPath": "system/params",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"
@@ -104,7 +114,8 @@
     "name": "oi.setting.cache",
     "title": "缓存管理",
     "componentPath": "system/cache",
-    "requireAuth": true,
+    "requiresAuth": true,
+    "keepAlive": true,
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"

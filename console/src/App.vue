@@ -1,30 +1,19 @@
 <script setup lang="ts">
-import { zhCN, dateZhCN, darkTheme, lightTheme } from 'naive-ui'
-import { theme } from '@/lib/naive-ui'
-import { useAppConfig } from './stores/useAppConfig'
-import { useDark, usePreferredDark } from '@vueuse/core'
+import { zhCN, dateZhCN } from 'naive-ui'
+import { useThemeColor } from '@/composables/useThemeColor'
 
-const appConfig = useAppConfig()
-const isPreferredDark = usePreferredDark()
-const isDark = useDark({
-  selector: 'html',
-  attribute: 'class',
-})
-
-const getTheme = computed(() => {
-  const { themeMode } = appConfig
-  if (themeMode === 'system') {
-    isDark.value = isPreferredDark.value
-    return isDark.value ? darkTheme : lightTheme
-  } else {
-    isDark.value = themeMode === 'dark'
-    return isDark.value ? darkTheme : lightTheme
-  }
-})
+const { theme, themeOverrides } = useThemeColor()
+watch(
+  themeOverrides,
+  () => {
+    console.log('ThemeOverrides Changed: ', themeOverrides.value)
+  },
+  { deep: true },
+)
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="theme" :theme="getTheme">
+  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themeOverrides" :theme="theme">
     <RouterView />
   </n-config-provider>
 </template>

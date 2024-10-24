@@ -29,12 +29,19 @@ const appConfig = useAppConfig()
         <transition name="fade">
           <TabBar v-if="appConfig.showTabBar" />
         </transition>
-        <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component, route }">
           <transition name="page" mode="out-in">
             <template v-if="appConfig.refreshTabPage">
-              <p>正在刷新</p>
+              <p>正在刷新...</p>
             </template>
-            <component v-else :is="Component" :data-tabbar="appConfig.showTabBar" />
+            <template v-else>
+              <keep-alive v-if="route.meta?.keepAlive" :key="route.name">
+                <component :is="Component" :key="route.path" :data-tabbar="appConfig.showTabBar" />
+              </keep-alive>
+              <template v-else>
+                <component :is="Component" :key="route.path" :data-tabbar="appConfig.showTabBar" />
+              </template>
+            </template>
           </transition>
         </router-view>
       </n-layout-content>

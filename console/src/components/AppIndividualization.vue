@@ -2,8 +2,10 @@
 import { useToggle } from '@vueuse/core'
 import AppTheme from './AppTheme.vue'
 import { useAppConfig } from '@/stores/useAppConfig'
+import { useThemeColor } from '@/composables/useThemeColor'
 
 const appConfig = useAppConfig()
+const { themeMode } = useThemeColor()
 
 const showConfig = ref<boolean>(false)
 const toggleShowConfig = useToggle(showConfig)
@@ -61,9 +63,10 @@ const toggleShowConfig = useToggle(showConfig)
           <div class="space-y-1 text-xs text-zinc-500">
             <p>需要注意的是，在暗色模式下，主题色不能够很好的进行适配。</p>
             <p>后续可能会在某个版本更新这个问题，当然在你有解决方案的时候，也可以为开源作出贡献。</p>
+            <p>{{ themeMode }}</p>
           </div>
           <n-select
-            v-model:value="appConfig.themeMode"
+            v-model:value="themeMode"
             :options="[
               { label: '亮色', value: 'light' },
               { label: '暗色', value: 'dark' },

@@ -56,8 +56,9 @@ export const welcomeItem: TabItem = {
   label: '欢迎页',
   to: { name: 'oi.welcome' },
 }
+export const storeName = 'appConfig'
 
-export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppConfigActions>('appConfig', {
+export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppConfigActions>(storeName, {
   state: () => ({
     themeMode: 'system',
     siteName: 'LearnOnce',
