@@ -61,7 +61,7 @@ function handleContextMenuEvent(key: string | number) {
 <template>
   <div
     class="flex items-center flex-shrink-0 pr-2 overflow-hidden transition select-none group"
-    :class="isActive ? 'bg-zinc-50 dark:bg-zinc-700 dark:text-white' : 'hover:bg-zinc-50 dark:hover:bg-zinc-800 dark:text-zinc-200'"
+    :class="isActive ? 'bg-zinc-100 dark:bg-zinc-700 dark:text-white' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-200'"
     @contextmenu="handleContextMenu"
   >
     <p class="pl-3 pr-1 h-navbar flex items-center text-[0.8125rem] cursor-pointer whitespace-nowrap" @click="emit('select', tab)">{{ tab.label }}</p>
