@@ -1,6 +1,8 @@
-<div style="display:flex;align-items: center;justify-content:center;gap:8px;background:radial-gradient(#00000090 1px, transparent 1px);background-size: 16px 16px;padding:20px 0;margin-bottom: 16px;">
-  <img src="./console/public/favicon.ico" width="34" alt="logo" />
-  <strong style="font-size:28px">Learn Once</strong>
+<div align="center">
+  <div style="display:flex;align-items: center;justify-content:center;gap:8px;background:radial-gradient(#00000090 1px, transparent 1px);background-size: 16px 16px;padding:20px 0;margin-bottom: 16px;">
+    <img src="./console/public/favicon.ico" width="34" alt="logo" />
+    <strong style="font-size:28px">Learn Once</strong>
+</div>
 </div>
 
 # LearnPermissionControlAdmin
