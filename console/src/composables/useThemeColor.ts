@@ -106,13 +106,31 @@ const swatches: string[] = [
 // 切换颜色后再深色模式不能够很好的兼容
 // 后续加入 themeMode 判断并通过 colord 对当前颜色进行处理以便再暗色模式下，选取的颜色能够适配
 // 颜色处理抽成函数，因为在 themeMode 切换到亮色的时候要对暗色选取的颜色进行加深
+let colorSource: string
 function formatColor() {
+  let color = localStorage.getItem(themeColorStorageKey)
+  let brightColor, darkenColor
+  if (!color) {
+    color = themeOverrides.value.common?.primaryColor as string
+  }
   // dark 浅化颜色
+  if (isDark.value) {
+    color = colord(color).lighten(0.16).toHex()
+    brightColor = colord(color).lighten(0.1).toHex()
+    darkenColor = colord(color).lighten(0.125).toHex()
+  }
   // light 加深颜色
-}
-function setThemeColor(color: string) {
-  const brightColor = colord(color).lighten(0.05).toHex()
-  const darkenColor = colord(color).darken(0.05).toHex()
+  else {
+    if (colorSource) {
+      color = colord(colorSource).darken(0.16).toHex()
+      brightColor = colord(colorSource).darken(0.2).toHex()
+      darkenColor = colord(colorSource).darken(0.125).toHex()
+    } else {
+      brightColor = colord(color).lighten(0.05).toHex()
+      darkenColor = colord(color).darken(0.075).toHex()
+    }
+  }
+  colorSource = color
   const colors: GlobalThemeOverrides['common'] = {
     primaryColor: color,
     primaryColorHover: brightColor,
@@ -123,7 +141,12 @@ function setThemeColor(color: string) {
     ...themeOverrides.value.common,
     ...colors,
   }
+}
+watch(isDark, formatColor)
+
+function setThemeColor(color: string) {
   localStorage.setItem(themeColorStorageKey, color)
+  formatColor()
   ;({ loadingBar } = getLoadingBar(themeOverrides.value))
 }
 

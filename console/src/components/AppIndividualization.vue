@@ -40,7 +40,7 @@ const toggleShowConfig = useToggle(showConfig)
       <div class="mt-12 space-y-8 text-sm">
         <div class="space-y-3">
           <p class="text-sm font-semibold">网站名称</p>
-          <div class="space-y-1 text-xs text-zinc-500">
+          <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>指的是左上角 LOGO 旁边的标题名称</p>
           </div>
           <n-input v-model:value="appConfig.siteName" placeholder="请输入" />
@@ -60,11 +60,9 @@ const toggleShowConfig = useToggle(showConfig)
         </div>
         <div class="space-y-3">
           <p class="text-sm font-semibold">网站主题模式</p>
-          <div class="space-y-1 text-xs text-zinc-500">
+          <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>需要注意的是，在暗色模式下，主题色不能够很好的进行适配。</p>
             <p>后续可能会在某个版本更新这个问题，当然在你有解决方案的时候，也可以为开源作出贡献。</p>
-            <p>{{ themeMode }}</p>
-            <p class="truncate">{{ theme }}</p>
           </div>
           <n-select
             v-model:value="themeMode"
@@ -78,14 +76,15 @@ const toggleShowConfig = useToggle(showConfig)
         </div>
         <div class="space-y-3">
           <p class="text-sm font-semibold">主题色</p>
-          <div class="space-y-1 text-xs text-zinc-500">
+          <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>色彩弹窗中预设了多种颜色值，点击即可使用</p>
+            <p>为了兼容亮/暗色模式下选择的色彩在反转模式下的亮度，在设置主题色时会自动调整光暗程度。本人能力有限，如使用过程中有更好的解决办法，请提交 PR。</p>
           </div>
           <AppTheme class="w-44" />
         </div>
         <div class="space-y-3">
           <p class="text-sm font-semibold">显示标签导航栏</p>
-          <div class="space-y-1 text-xs text-zinc-500">
+          <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>默认开启。</p>
             <p>标签导航栏支持右键菜单、顺序拖拽、一键关闭等多个选项</p>
           </div>

@@ -25,17 +25,6 @@ const cloudServiceActivity: CloudActivity[] = [
     href: 'https://curl.qcloud.com/RJ5Elol0',
   },
 ]
-
-interface QQGroupItem {
-  code: number
-  isFull: boolean
-}
-const qqGroup: QQGroupItem[] = [
-  {
-    code: 701470295,
-    isFull: false,
-  },
-]
 </script>
 
 <template>
@@ -55,7 +44,7 @@ const qqGroup: QQGroupItem[] = [
           <p>在项目开发上，只有日志会插手业务，因为需要为你记录并在某个时候回顾。但请注意，日志事件在现阶段需要开发者手动添加。</p>
           <p>
             如果需要做出更强大的系统，<span class="font-semibold">{{ appConfig.siteName }}</span> 支持深度定制。如果在使用或定制过程中有什么问题，可以通过
-            Discord / QQ群 咨询。
+            Discord 咨询。
           </p>
           <br />
           <p class="flex items-center gap-1 mb-2">
@@ -88,19 +77,6 @@ const qqGroup: QQGroupItem[] = [
               </template>
               <span class="font-semibold">去 Discord 交流</span>
             </n-button>
-          </p>
-          <br />
-          <p>QQ 交流群：</p>
-          <p class="flex items-center gap-3">
-            <a
-              v-for="item in qqGroup"
-              :key="item.code"
-              :href="`http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=DL-3yIy_Y-7IWPMkGO9vQsilUd0KcLwR&authKey=iVVyAjYK3Hya7i3BAYyXNt2hYpeoRe8TTvSNqlInSNr13RG7GGCp3hrZQktNHA51&noverify=0&group_code=${item.code}`"
-              target="_blank"
-              :class="['text-blue-500', item.isFull && 'line-through']"
-            >
-              {{ item.code }}
-            </a>
           </p>
         </div>
       </div>
