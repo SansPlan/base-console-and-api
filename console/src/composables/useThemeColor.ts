@@ -118,6 +118,7 @@ function formatColor() {
     color = colord(color).lighten(0.16).toHex()
     brightColor = colord(color).lighten(0.1).toHex()
     darkenColor = colord(color).lighten(0.125).toHex()
+    colorSource = color
   }
   // light 加深颜色
   else {
@@ -125,12 +126,12 @@ function formatColor() {
       color = colord(colorSource).darken(0.16).toHex()
       brightColor = colord(colorSource).darken(0.2).toHex()
       darkenColor = colord(colorSource).darken(0.125).toHex()
+      colorSource = ''
     } else {
       brightColor = colord(color).lighten(0.05).toHex()
       darkenColor = colord(color).darken(0.075).toHex()
     }
   }
-  colorSource = color
   const colors: GlobalThemeOverrides['common'] = {
     primaryColor: color,
     primaryColorHover: brightColor,
