@@ -6,6 +6,7 @@
     "componentPath": "Index",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": false,
     "icon": "mdi:robot-outline",
     "parentName": "oi.main"
@@ -17,6 +18,7 @@
     "componentPath": "Dashboard",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "solar:pie-chart-bold",
     "parentName": "oi.main"
@@ -28,6 +30,7 @@
     "componentPath": "Notification",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": false,
     "icon": "hugeicons:notification-01",
     "parentName": "oi.main"
@@ -38,7 +41,8 @@
     "title": "权限管理",
     "componentPath": "View",
     "requiresAuth": true,
-    "keepAlive": true,
+    "keepAlive": false,
+    "type": "directory",
     "showAside": true,
     "icon": "icon-park-outline:permissions",
     "parentName": "oi.main"
@@ -50,6 +54,7 @@
     "componentPath": "permission/Menu",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "bi:menu-button",
     "parentName": "oi.permission"
@@ -61,6 +66,7 @@
     "componentPath": "permission/Role",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "eos-icons:role-binding-outlined",
     "parentName": "oi.permission"
@@ -72,6 +78,7 @@
     "componentPath": "permission/RoleGroup",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.permission"
@@ -82,7 +89,8 @@
     "title": "系统设置",
     "componentPath": "View",
     "requiresAuth": true,
-    "keepAlive": true,
+    "keepAlive": false,
+    "type": "directory",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.main"
@@ -94,6 +102,7 @@
     "componentPath": "system/dict",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"
@@ -105,6 +114,7 @@
     "componentPath": "system/params",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"
@@ -116,6 +126,7 @@
     "componentPath": "system/cache",
     "requiresAuth": true,
     "keepAlive": true,
+    "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
     "parentName": "oi.setting"

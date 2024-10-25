@@ -7,6 +7,8 @@ interface AuthorizeState {
   token: string
   // 授权用户信息
   userInfo: ObjectAny
+  // 原始菜单
+  menuRaw: any[]
   // 授权菜单树
   menu: any[]
   // 路由是否已经安装
@@ -24,6 +26,7 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
   state: () => ({
     token: 'test',
     userInfo: {},
+    menuRaw: [],
     menu: [],
     installRoutes: false,
   }),
@@ -34,6 +37,7 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
   actions: {
     // 获取授权菜单
     async getAuthorizeMenu() {
+      this.menuRaw = routes
       this.menu = convertListToTree(routes, 'oi.main')
     },
     // 安装授权菜单
