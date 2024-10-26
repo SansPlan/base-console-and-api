@@ -65,7 +65,7 @@ function handleDropdownEvent(key: string | number) {
           <div v-for="(item, index) in appConfig.tabBarItems" :key="item.to.name">
             <TabBarItem
               :tab="item"
-              :no-closable="item.to.name.includes('welcome')"
+              :no-closable="item.to.name.includes('Welcome')"
               :is-active="item.to.name === appConfig.currentTabKey"
               @close="() => appConfig.removeTabItem(index)"
               @close-other="() => appConfig.removeOtherTabItems(index)"

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center justify-center h-screen">
-    <div class="max-w-4xl min-w-[320px] mx-auto text-zinc-600">
+  <div class="p-4 lg:p-40">
+    <div class="mx-auto text-zinc-600">
       <h1 class="flex items-center gap-2 text-4xl font-semibold">
         <Icon icon="material-symbols:no-encryption-outline-sharp" />
         <span class="font-mono">404</span>
@@ -14,6 +14,7 @@
           <li>无权限访问</li>
           <li>项目更新未调整跳转路由</li>
           <li>路由不存在</li>
+          <li>组件不存在</li>
         </ul>
       </div>
       <p class="flex items-center gap-3">

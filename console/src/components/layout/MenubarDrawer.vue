@@ -3,15 +3,15 @@ import { useAppConfig } from '@/stores/useAppConfig'
 import { Menubar } from '.'
 
 const route = useRoute()
-const appConfig = useAppConfig()
+const { collapse, toggleCollapse } = useAppConfig()
 
 const showMenu = ref<boolean>(false)
 watch(route, () => (showMenu.value = false))
 
 function toggleMenu() {
   showMenu.value = !showMenu.value
-  if (showMenu.value && appConfig.collapse) {
-    appConfig.toggleCollapse()
+  if (showMenu.value && collapse) {
+    toggleCollapse()
   }
 }
 </script>

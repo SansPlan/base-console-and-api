@@ -1,9 +1,39 @@
 <script setup lang="ts">
+import { useAuthorize } from '@/stores/useAuthorize'
+import { useAppConfig } from '@/stores/useAppConfig'
+
 interface Prop {
   size: number | 'small' | 'medium' | 'large' | undefined
 }
 
 defineProps<Partial<Prop>>()
+
+const dialog = useDialog()
+const router = useRouter()
+const { userInfo, withLogout } = useAuthorize()
+const { tabBarItems, removeAllTabItems } = useAppConfig()
+
+function onLogout() {
+  let content: string = `再次确认退出当前账号：${userInfo.name}`
+  if (tabBarItems.length > 1) {
+    content = '退出账号后将丢失本地状态，已打开的标签页如有未保存内容也会丢失，继续吗？'
+  }
+  const d = dialog.warning({
+    title: '账号提示',
+    content,
+    maskClosable: false,
+    closeOnEsc: false,
+    closable: false,
+    negativeText: '取消',
+    positiveText: '继续退出',
+    onPositiveClick() {
+      d.destroy()
+      withLogout(router)
+      removeAllTabItems()
+      router.push('/login')
+    },
+  })
+}
 </script>
 
 <template>
@@ -35,7 +65,7 @@ defineProps<Partial<Prop>>()
           </div>
         </li>
         <li>
-          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-950 transition cursor-pointer">
+          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-950 transition cursor-pointer" @click="onLogout">
             <Icon icon="ic:round-logout" width="18" />
             <p>退出登录</p>
           </div>

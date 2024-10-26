@@ -7,7 +7,7 @@ import { MenubarToggle, MenubarDrawer } from '.'
 
 import { useAppConfig } from '@/stores/useAppConfig'
 
-const appConfig = useAppConfig()
+const { siteName, isHomePage } = useAppConfig()
 </script>
 
 <template>
@@ -15,11 +15,11 @@ const appConfig = useAppConfig()
     <header class="flex items-center h-full gap-1 px-3 mx-auto container-full">
       <router-link to="/" class="flex items-center flex-shrink-0 gap-1 font-semibold">
         <LearnOnceLogo :size="20" class="dark:text-white" />
-        <span class="mx-0.5 -mt-0.5 text-sm">{{ appConfig.siteName }}</span>
+        <span class="mx-0.5 -mt-0.5 text-sm">{{ siteName }}</span>
       </router-link>
 
       <div class="flex items-center px-2">
-        <MenubarToggle v-if="!appConfig.isHomePage()" />
+        <MenubarToggle v-if="!isHomePage()" />
         <template v-else>
           <router-link to="/dashboard" class="hidden lg:inline">
             <n-button quaternary circle>

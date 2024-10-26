@@ -3,6 +3,8 @@ import { Header, TabBar, Menubar } from '@/components/layout'
 import { useAppConfig } from '@/stores/useAppConfig'
 
 const appConfig = useAppConfig()
+
+const getKeepAliveInclude = computed(() => appConfig.tabBarItems.map(item => item.to.name))
 </script>
 
 <template>
@@ -25,16 +27,14 @@ const appConfig = useAppConfig()
       >
         <Menubar />
       </n-layout-sider>
-      <n-layout-content :naive-scrollbar="false" embedded :native-scrollbar="false">
-        <transition name="fade">
-          <TabBar v-if="appConfig.showTabBar" />
-        </transition>
-        <router-view v-slot="{ Component }">
-          <keep-alive>
-            <transition name="page" mode="out-in">
-              <component :is="Component" :data-tabbar="appConfig.showTabBar" />
-            </transition>
-          </keep-alive>
+      <n-layout-content :naive-scrollbar="false" embedded>
+        <TabBar v-if="appConfig.showTabBar" />
+        <router-view v-slot="{ Component, route }">
+          <transition name="page" mode="out-in">
+            <keep-alive :include="getKeepAliveInclude">
+              <component :is="Component" :key="route.fullPath" :data-tabbar="appConfig.showTabBar" />
+            </keep-alive>
+          </transition>
         </router-view>
       </n-layout-content>
     </n-layout>

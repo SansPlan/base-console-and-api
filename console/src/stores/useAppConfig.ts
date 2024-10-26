@@ -54,7 +54,7 @@ export type AppConfigProvider = AppConfigState & AppConfigActions
 
 export const welcomeItem: TabItem = {
   label: '欢迎页',
-  to: { name: 'oi.welcome' },
+  to: { name: 'LearnWelcome' },
 }
 export const storeName = 'appConfig'
 

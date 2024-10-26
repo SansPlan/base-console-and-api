@@ -6,11 +6,10 @@ import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
 
 const route = useRoute()
-const authorize = useAuthorize()
+const { menuTree } = useAuthorize()
 const appConfig = useAppConfig()
 
 // 侧边栏折叠
-const isCollapsed = computed(() => appConfig.collapse)
 const collapsedIconSize = computed(() => (appConfig.collapse ? 20 : 16))
 
 // 当前路由的 name
@@ -63,9 +62,9 @@ function resolveMenu(tree: ObjectAny | ObjectAny[]) {
   <n-menu
     :value="activeRouteName"
     :indent="18"
-    :collapsed="isCollapsed"
-    :collapsed-width="appConfig.sidebarCollapseWidth"
-    :options="resolveMenu(authorize.MENU)"
+    :collapsed="appConfig.collapse"
+    :collapsed-width="appConfig.menubarCollapseWidth"
+    :options="resolveMenu(menuTree)"
     :render-label="renderMenuLabel"
     :render-icon="renderMenuIcon"
   />

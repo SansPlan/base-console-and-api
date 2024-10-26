@@ -4,7 +4,7 @@ import type { Router } from 'vue-router'
 import { useThemeColor } from '@/composables/useThemeColor'
 import { useAppConfig } from '@/stores/useAppConfig'
 
-export const LOGIN_PAGE = 'oi.login'
+export const LOGIN_PAGE = 'LearnLogin'
 
 export const useGuard = (router: Router) => {
   const { loadingBar } = useThemeColor()
@@ -15,10 +15,10 @@ export const useGuard = (router: Router) => {
     const appConfig = useAppConfig()
 
     if (to.name !== LOGIN_PAGE) {
-      if (to.meta?.requireAuth && !authorize.TOKEN) {
+      if (to.meta?.requireAuth && !authorize.token) {
         return { name: LOGIN_PAGE }
       } else {
-        if (!authorize.installRoutes) {
+        if (!authorize.isInstallRoutes) {
           await authorize.withInstallMenu(router)
           return to.fullPath
         }

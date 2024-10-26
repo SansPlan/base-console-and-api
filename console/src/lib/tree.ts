@@ -1,6 +1,6 @@
 // 列表 -> 树
 // 要求支持自定义转化
-export function convertListToTree(list: any[], parentName: string = 'oi.main'): any[] {
+export function convertListToTree(list: any[], parentName: string = 'LearnMainView'): any[] {
   return list
     .filter(item => item.parentName === parentName)
     .map(item => ({

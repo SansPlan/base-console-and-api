@@ -7,6 +7,14 @@ const { theme, themeOverrides } = useThemeColor()
 
 <template>
   <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="theme" :theme-overrides="themeOverrides">
-    <RouterView />
+    <n-dialog-provider>
+      <n-message-provider>
+        <n-notification-provider>
+          <n-loading-bar-provider>
+            <RouterView />
+          </n-loading-bar-provider>
+        </n-notification-provider>
+      </n-message-provider>
+    </n-dialog-provider>
   </n-config-provider>
 </template>

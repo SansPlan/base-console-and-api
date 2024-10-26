@@ -1,12 +1,18 @@
+<script lang="ts">
+export default {
+  name: 'LearnPermissionRole',
+}
+</script>
+
 <script setup lang="ts">
-const value = ref('')
+const inputRef = ref('')
 </script>
 
 <template>
   <main>
     <div class="w-48 p-4">
       <p>角色管理</p>
-      <n-input v-model:value="value" />
+      <n-input v-model:value="inputRef" />
     </div>
   </main>
 </template>

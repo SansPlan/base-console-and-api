@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { FormRules } from 'naive-ui'
+import { useAppConfig } from '@/stores/useAppConfig'
+import { useAuthorize } from '@/stores/useAuthorize'
 
 // 表单字段
 interface LoginForm {
@@ -7,6 +9,15 @@ interface LoginForm {
   password: string
   captcha: string
 }
+
+const router = useRouter()
+const { withLogout } = useAuthorize()
+const { siteName, removeAllTabItems } = useAppConfig()
+
+onMounted(() => {
+  withLogout(router)
+  removeAllTabItems()
+})
 
 // 定义 表单组件 ref
 // 定义 表单
@@ -50,21 +61,22 @@ function handleSubmit() {
   formRef.value?.validate(async (error: any) => {
     if (!error) {
       // 验证通过
+      router.push('/')
     }
   })
 }
 </script>
 
 <template>
-  <main class="flex flex-col min-h-screen p-16 pb-6 block-line-background">
-    <div class="mb-20">
+  <main class="flex flex-col min-h-screen p-5 lg:p-16 lg:pb-6 block-line-background">
+    <div>
       <div class="flex items-start gap-3 px-1 font-semibold">
-        <span class="text-3xl">Oi, Web</span>
+        <span class="text-3xl">{{ siteName }}</span>
         <span class="text-sm">管理端</span>
       </div>
     </div>
-    <section class="flex-grow">
-      <div class="max-w-[360px] mx-auto bg-white/10 backdrop-blur p-6 rounded shadow-2xl" style="--tw-shadow: 0 0 20px 4px rgba(0 0 0 / 0.1)">
+    <section class="flex-grow py-8 lg:py-20">
+      <div class="max-w-[360px] mx-auto bg-white/10 backdrop-blur p-6 rounded-xl shadow" style="--tw-shadow: 0 0 20px 4px rgba(0 0 0 / 0.1)">
         <div class="mb-8 space-y-2 text-center">
           <h3 class="space-x-1">
             <span class="inline text-xl align-middle">欢迎回来</span>
@@ -99,7 +111,7 @@ function handleSubmit() {
         </n-form>
       </div>
     </section>
-    <footer class="space-y-1 text-sm text-center text-zinc-600">
+    <footer class="space-y-1 text-xs text-center md:text-sm text-zinc-600">
       <div>Copyright &copy;2024 {Oi, Web} All Rights Reserved.</div>
       <div>粤备xxxxxxxx-1 <n-divider vertical /> 粤网安 xxxxxxx</div>
     </footer>
@@ -108,7 +120,7 @@ function handleSubmit() {
 
 <style lang="scss" scoped>
 .block-line-background {
-  background-size: 27px 27px;
+  background-size: 17px 17px;
   background-image: linear-gradient(to right, #d4d4d8 1px, transparent 1px), linear-gradient(to bottom, #d4d4d8 1px, transparent 1px);
 }
 </style>
