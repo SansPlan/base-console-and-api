@@ -6,7 +6,7 @@ const notificateQuantity = ref<number>(0)
   <router-link to="/notification">
     <n-button quaternary circle>
       <n-badge dot :value="notificateQuantity" :show="!!notificateQuantity">
-        <Icon icon="hugeicons:notification-01" width="18" />
+        <Icon icon="mingcute:notification-line" width="18" />
       </n-badge>
     </n-button>
   </router-link>

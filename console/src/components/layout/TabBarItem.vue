@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type TabItem } from '@/stores/useAppConfig'
 import type { DropdownOption } from 'naive-ui'
+import { LearnOnceLogo } from '../learn-once'
 
 interface Prop {
   tab: TabItem
@@ -60,16 +61,19 @@ function handleContextMenuEvent(key: string | number) {
 
 <template>
   <div
-    class="flex items-center flex-shrink-0 pr-2 overflow-hidden transition select-none group"
+    class="flex items-center flex-shrink-0 gap-2 px-2 overflow-hidden transition cursor-pointer select-none group h-navbar"
     :class="isActive ? 'bg-zinc-100 dark:bg-zinc-700 dark:text-white' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-200'"
     @contextmenu="handleContextMenu"
+    @click="emit('select', tab)"
   >
-    <p class="pl-3 pr-1 h-navbar flex items-center text-[0.8125rem] cursor-pointer whitespace-nowrap" @click="emit('select', tab)">{{ tab.label }}</p>
+    <Icon v-if="tab.icon" :icon="tab.icon" width="14" />
+    <LearnOnceLogo v-else :size="16" />
+    <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"
       class="p-0.5 transition-all cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-950 rounded"
       :class="isActive ? 'scale-100' : 'scale-0 group-hover:scale-100'"
-      @click="emit('close')"
+      @click.prevent="emit('close')"
     >
       <Icon icon="mi:close" width="14" />
     </span>

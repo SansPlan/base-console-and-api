@@ -4,7 +4,7 @@ import { useAppConfig } from '@/stores/useAppConfig'
 
 const appConfig = useAppConfig()
 
-const getKeepAliveInclude = computed(() => appConfig.tabBarItems.map(item => item.to.name))
+const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.map(item => item.name as string))
 </script>
 
 <template>
@@ -27,10 +27,10 @@ const getKeepAliveInclude = computed(() => appConfig.tabBarItems.map(item => ite
       >
         <Menubar />
       </n-layout-sider>
-      <n-layout-content :naive-scrollbar="false" embedded>
+      <n-layout-content :native-scrollbar="false" embedded>
         <TabBar v-if="appConfig.showTabBar" />
         <router-view v-slot="{ Component, route }">
-          <transition name="page" mode="out-in">
+          <transition name="fade" mode="out-in">
             <keep-alive :include="getKeepAliveInclude">
               <component :is="Component" :key="route.fullPath" :data-tabbar="appConfig.showTabBar" />
             </keep-alive>

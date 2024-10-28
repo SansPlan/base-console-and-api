@@ -15,7 +15,7 @@ const toggleShowConfig = useToggle(showConfig)
   <n-tooltip>
     <template #trigger>
       <n-button quaternary circle @click="toggleShowConfig()">
-        <Icon icon="hugeicons:computer-programming-02" width="18" />
+        <Icon icon="mdi:theme-outline" width="18" />
       </n-button>
     </template>
     本地个性化设置
@@ -25,10 +25,13 @@ const toggleShowConfig = useToggle(showConfig)
     <div
       class="p-6 lg:p-12 bg-white dark:bg-zinc-800 rounded-2xl rounded-bl-none rounded-br-none lg:rounded-bl-2xl lg:rounded-br-2xl mt-5 mb-0 lg:mb-5 shadow w-full max-w-[760px]"
     >
-      <div class="sticky z-50 flex justify-end top-6 lg:top-12">
-        <n-button secondary circle @click="toggleShowConfig()" class="sticky text-white bg-zinc-600 focus:bg-zinc-600">
+      <div class="sticky z-50 flex justify-end top-6 lg:top-12 lg:-my-4">
+        <span
+          class="sticky text-white bg-zinc-600 focus:bg-zinc-600 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer hover:bg-zinc-700 transition"
+          @click="toggleShowConfig()"
+        >
           <Icon icon="line-md:close" width="18" class="dark:text-zinc-200" />
-        </n-button>
+        </span>
       </div>
       <div class="space-y-2">
         <h3 class="flex items-center gap-2">
@@ -78,7 +81,10 @@ const toggleShowConfig = useToggle(showConfig)
           <p class="text-sm font-semibold">主题色</p>
           <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>色彩弹窗中预设了多种颜色值，点击即可使用</p>
-            <p>为了兼容亮/暗色模式下选择的色彩在反转模式下的亮度，在设置主题色时会自动调整光暗程度。本人能力有限，如使用过程中有更好的解决办法，请提交 PR。</p>
+            <p class="bg-zinc-100 p-1 rounded dark:bg-zinc-900">
+              <Icon icon="ic:round-warning" class="inline" width="16" />
+              在暗色模式下，黑色系相关颜色未做到兼容，请谨慎选择
+            </p>
           </div>
           <AppTheme class="w-44" />
         </div>

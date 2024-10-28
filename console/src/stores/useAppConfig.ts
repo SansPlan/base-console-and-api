@@ -1,3 +1,5 @@
+import type { RouteRecordNameGeneric, RouterLinkProps } from 'vue-router'
+
 export type SystemThemeMode = 'light' | 'dark' | 'system'
 
 export interface AppConfigState {
@@ -16,7 +18,7 @@ export interface AppConfigState {
   // 标签栏
   showTabBar: boolean
   // 当前标签key
-  currentTabKey: string | number
+  currentTabKey: RouteRecordNameGeneric
   // 标签页列表
   tabBarItems: TabItem[]
   // 标签页组件刷新
@@ -26,9 +28,9 @@ export interface AppConfigState {
 // 标签页
 export interface TabItem {
   label: string
-  to: {
-    name: string
-  }
+  icon?: string
+  name: RouteRecordNameGeneric
+  to: RouterLinkProps['to']
 }
 
 export interface AppConfigActions {
@@ -54,6 +56,7 @@ export type AppConfigProvider = AppConfigState & AppConfigActions
 
 export const welcomeItem: TabItem = {
   label: '欢迎页',
+  name: 'LearnWelcome',
   to: { name: 'LearnWelcome' },
 }
 export const storeName = 'appConfig'
@@ -69,7 +72,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       top: '28px',
     },
     showTabBar: true,
-    currentTabKey: welcomeItem.to.name,
+    currentTabKey: welcomeItem.name,
     tabBarItems: [welcomeItem],
     refreshTabPage: false,
   }),
@@ -88,22 +91,22 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       this.collapse = !this.collapse
     },
     pushTabItem(route: TabItem) {
-      const findItem = this.tabBarItems.find(item => item.to.name === route.to.name)
+      const findItem = this.tabBarItems.find(item => item.name === route.name)
       if (!findItem) {
         this.tabBarItems.push(route)
-        this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].to.name
+        this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].name
       } else {
-        this.currentTabKey = findItem.to.name
+        this.currentTabKey = findItem.name
       }
     },
     removeTabItem(index: number) {
       this.tabBarItems.splice(index, 1)
       if (this.tabBarItems.length === 1) {
-        this.currentTabKey = welcomeItem.to.name
+        this.currentTabKey = welcomeItem.name
+      } else if (index > this.tabBarItems.length - 1) {
+        this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].name
       } else {
-        if (index > this.tabBarItems.length - 1) {
-          this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].to.name
-        }
+        this.currentTabKey = this.tabBarItems[index].name
       }
     },
     removeRightTabItems(index: number) {
@@ -113,11 +116,11 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     removeOtherTabItems(index: number) {
       const item = this.tabBarItems[index]
       this.tabBarItems = [welcomeItem, item]
-      this.currentTabKey = item.to.name
+      this.currentTabKey = item.name
     },
     removeAllTabItems() {
       this.tabBarItems = [welcomeItem]
-      this.currentTabKey = welcomeItem.to.name
+      this.currentTabKey = welcomeItem.name
     },
   },
   persist: true,

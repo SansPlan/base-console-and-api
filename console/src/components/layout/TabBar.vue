@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppConfig, type TabItem } from '@/stores/useAppConfig'
+import { useAppConfig, welcomeItem, type TabItem } from '@/stores/useAppConfig'
 import TabBarItem from './TabBarItem.vue'
 import type { DropdownOption } from 'naive-ui'
 import { useSortable } from '@vueuse/integrations/useSortable'
@@ -11,15 +11,15 @@ const appConfig = useAppConfig()
 watch(
   () => appConfig.currentTabKey,
   () => {
-    const currentItem = appConfig.tabBarItems.find(item => item.to.name === appConfig.currentTabKey)
-    if (currentItem && currentItem.to.name !== route.name) {
+    const currentItem = appConfig.tabBarItems.find(item => item.name === appConfig.currentTabKey)
+    if (currentItem && currentItem.name !== route.name) {
       router.push(currentItem.to)
     }
   },
 )
 
 function handleSelectItem(item: TabItem) {
-  if (item.to.name !== route.name) {
+  if (item.name !== route.name) {
     router.push(item.to)
   }
 }
@@ -58,15 +58,15 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div class="sticky inset-x-0 top-0 hidden overflow-hidden bg-white border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
+  <div class="sticky inset-x-0 top-0 z-[1] hidden overflow-hidden bg-white border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
         <div class="flex items-center divide-x divide-zinc-100 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
-          <div v-for="(item, index) in appConfig.tabBarItems" :key="item.to.name">
+          <div v-for="(item, index) in appConfig.tabBarItems" :key="item.name">
             <TabBarItem
               :tab="item"
-              :no-closable="item.to.name.includes('Welcome')"
-              :is-active="item.to.name === appConfig.currentTabKey"
+              :no-closable="item.name === welcomeItem.name"
+              :is-active="item.name === appConfig.currentTabKey"
               @close="() => appConfig.removeTabItem(index)"
               @close-other="() => appConfig.removeOtherTabItems(index)"
               @close-right-tabs="() => appConfig.removeRightTabItems(index)"

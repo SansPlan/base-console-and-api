@@ -9,7 +9,7 @@ interface CloudActivity {
   href: string
 }
 
-const appConfig = useAppConfig()
+const { siteName } = useAppConfig()
 
 const cloudServiceActivity: CloudActivity[] = [
   { title: '通义灵码_智能编码助手', badge: '阿里', href: 'https://tongyi.aliyun.com/lingma/pricing?userCode=rvhutp2k' },
@@ -28,8 +28,8 @@ const cloudServiceActivity: CloudActivity[] = [
 </script>
 
 <template>
-  <main>
-    <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-dot-grid">
+  <main class="bg-white dark:bg-zinc-900">
+    <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-dot-grid bg-zinc-100/80 dark:bg-zinc-950">
       <div class="max-w-6xl px-4 mx-auto lg:px-8">
         <h1 class="flex items-center gap-3 text-2xl font-semibold">
           <span>欢迎回来！</span>
@@ -37,15 +37,7 @@ const cloudServiceActivity: CloudActivity[] = [
           <Icon icon="mdi:applause" class="text-orange-500" />
         </h1>
         <div class="space-y-1 mt-7">
-          <p>
-            请容我简单为你介绍一下 <span class="font-semibold">{{ appConfig.siteName }} Console</span>。
-          </p>
-          <p>该管理后台是我结合多家中小公司后台管理系统开发经历所作，通过脚本可一键运行，部署也极为方便，简单易上手。</p>
-          <p>在项目开发上，只有日志会插手业务，因为需要为你记录并在某个时候回顾。但请注意，日志事件在现阶段需要开发者手动添加。</p>
-          <p>
-            如果需要做出更强大的系统，<span class="font-semibold">{{ appConfig.siteName }}</span> 支持深度定制。如果在使用或定制过程中有什么问题，可以通过
-            Discord 咨询。
-          </p>
+          <p>{{ siteName }} Console 为您提供快速开发业务而无需担心权限分配问题。</p>
           <br />
           <p class="flex items-center gap-1 mb-2">
             <span>开源仓库 <em>(MIT 协议)</em>：</span>
@@ -71,12 +63,6 @@ const cloudServiceActivity: CloudActivity[] = [
               </n-button>
             </router-link>
             <LearnOnceUpdateLog />
-            <n-button quaternary>
-              <template #icon>
-                <Icon icon="logos:discord-icon" />
-              </template>
-              <span class="font-semibold">去 Discord 交流</span>
-            </n-button>
           </p>
         </div>
       </div>
@@ -98,7 +84,7 @@ const cloudServiceActivity: CloudActivity[] = [
       </ul>
     </section>
     <footer class="py-6 text-sm text-center text-zinc-500">
-      <p>Copyright &copy;2024 {{ appConfig.siteName }}</p>
+      <p>Copyright &copy;2024 {{ siteName }}</p>
     </footer>
   </main>
 </template>

@@ -26,7 +26,10 @@ export const useGuard = (router: Router) => {
 
       appConfig.pushTabItem({
         label: (to.meta?.title as string) || '未命名',
-        to: { name: to.name as string },
+        // to: { name: to.name as string },
+        name: to.name,
+        icon: (to.meta.icon as string) || '',
+        to,
       })
     }
   })

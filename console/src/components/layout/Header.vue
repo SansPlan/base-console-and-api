@@ -2,7 +2,8 @@
 import { LearnOnceLogo } from '../learn-once'
 import AccountPopover from '../AccountPopover.vue'
 import AppNotification from '../AppNotification.vue'
-import AppConfig from '../AppIndividualization.vue'
+import AppIndividualization from '../AppIndividualization.vue'
+import { AppSearch } from '../app-search'
 import { MenubarToggle, MenubarDrawer } from '.'
 
 import { useAppConfig } from '@/stores/useAppConfig'
@@ -33,8 +34,9 @@ const { siteName, isHomePage } = useAppConfig()
 
       <span class="ml-auto" />
 
+      <AppSearch />
       <AppNotification />
-      <AppConfig />
+      <AppIndividualization />
 
       <n-divider vertical />
       <AccountPopover />

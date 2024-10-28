@@ -39,7 +39,9 @@ function onLogout() {
 <template>
   <n-popover trigger="click" raw class="rounded-md" :show-arrow="false">
     <template #trigger>
-      <n-avatar circle class="cursor-pointer" :size="size">U</n-avatar>
+      <n-avatar circle class="bg-white cursor-pointer dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-700" :size="size">
+        <Icon icon="mingcute:user-4-fill" width="20" class="text-black dark:text-white" />
+      </n-avatar>
     </template>
     <div class="w-56 p-2 py-2 bg-white rounded-md dark:bg-zinc-800">
       <div class="flex gap-3 py-2">

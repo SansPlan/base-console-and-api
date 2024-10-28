@@ -60,10 +60,10 @@ if (storageMode) {
 // 预设覆盖主题
 const { cloned: themeOverrides, sync } = useCloned<GlobalThemeOverrides & ObjectAny>({
   common: {
-    primaryColor: '#3f3f46',
-    primaryColorHover: '#71717a',
-    primaryColorPressed: '#27272a',
-    primaryColorSuppl: '#71717a',
+    primaryColor: '#2563eb',
+    primaryColorHover: '#3b82f6',
+    primaryColorPressed: '#1d4ed8',
+    primaryColorSuppl: '#3b82f6',
     borderRadius: '4px',
   },
   Menu: {
