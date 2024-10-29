@@ -26,9 +26,12 @@ export interface AppConfigState {
 }
 
 // 标签页
+// 想要实现页面级组件缓存，请记得给组件命名
+// 组件命名和 name 一致
 export interface TabItem {
   label: string
   icon?: string
+  keepAlive: boolean
   name: RouteRecordNameGeneric
   to: RouterLinkProps['to']
 }
@@ -57,6 +60,7 @@ export type AppConfigProvider = AppConfigState & AppConfigActions
 export const welcomeItem: TabItem = {
   label: '欢迎页',
   name: 'LearnWelcome',
+  keepAlive: false,
   to: { name: 'LearnWelcome' },
 }
 export const storeName = 'appConfig'

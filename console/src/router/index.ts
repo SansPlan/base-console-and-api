@@ -11,7 +11,7 @@ const router = createRouter({
       path: '/',
       name: 'LearnMainView',
       meta: {
-        requireAuth: true,
+        requiresAuth: true,
       },
       component: DEFAULT_LAYOUT_COMPONENT,
     },

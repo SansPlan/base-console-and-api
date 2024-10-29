@@ -15,7 +15,7 @@ const toggleShowConfig = useToggle(showConfig)
   <n-tooltip>
     <template #trigger>
       <n-button quaternary circle @click="toggleShowConfig()">
-        <Icon icon="mdi:theme-outline" width="18" />
+        <Icon icon="icon-park-outline:setting-config" width="18" />
       </n-button>
     </template>
     本地个性化设置
@@ -27,7 +27,7 @@ const toggleShowConfig = useToggle(showConfig)
     >
       <div class="sticky z-50 flex justify-end top-6 lg:top-12 lg:-my-4">
         <span
-          class="sticky text-white bg-zinc-600 focus:bg-zinc-600 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer hover:bg-zinc-700 transition"
+          class="sticky flex items-center justify-center text-white transition rounded-full cursor-pointer bg-zinc-600 focus:bg-zinc-600 w-9 h-9 hover:bg-zinc-700"
           @click="toggleShowConfig()"
         >
           <Icon icon="line-md:close" width="18" class="dark:text-zinc-200" />
@@ -81,7 +81,7 @@ const toggleShowConfig = useToggle(showConfig)
           <p class="text-sm font-semibold">主题色</p>
           <div class="space-y-1 text-xs text-zinc-500 dark:text-zinc-300">
             <p>色彩弹窗中预设了多种颜色值，点击即可使用</p>
-            <p class="bg-zinc-100 p-1 rounded dark:bg-zinc-900">
+            <p class="p-1 rounded bg-zinc-100 dark:bg-zinc-900">
               <Icon icon="ic:round-warning" class="inline" width="16" />
               在暗色模式下，黑色系相关颜色未做到兼容，请谨慎选择
             </p>

@@ -100,6 +100,7 @@ function mapInstallMenu(router: Router, menus: ObjectAny[]): RouteRecordRaw[] {
           title: item.title,
           icon: item.icon,
           showAside: item.showAside,
+          keepAlive: item.keepAlive,
         },
         component,
       }

@@ -62,7 +62,7 @@ function handleDropdownEvent(key: string | number) {
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
         <div class="flex items-center divide-x divide-zinc-100 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
-          <div v-for="(item, index) in appConfig.tabBarItems" :key="item.name">
+          <template v-for="(item, index) in appConfig.tabBarItems" :key="item.name">
             <TabBarItem
               :tab="item"
               :no-closable="item.name === welcomeItem.name"
@@ -74,7 +74,7 @@ function handleDropdownEvent(key: string | number) {
               @refresh="() => appConfig.onRefreshTabPage()"
               @select="handleSelectItem"
             />
-          </div>
+          </template>
         </div>
       </div>
       <div class="flex items-center flex-shrink-0 px-2">

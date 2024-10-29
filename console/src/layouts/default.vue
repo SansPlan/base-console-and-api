@@ -4,7 +4,7 @@ import { useAppConfig } from '@/stores/useAppConfig'
 
 const appConfig = useAppConfig()
 
-const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.map(item => item.name as string))
+const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.filter(item => item.keepAlive).map(item => item.name as string))
 </script>
 
 <template>

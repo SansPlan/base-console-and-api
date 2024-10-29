@@ -15,7 +15,7 @@ export const useGuard = (router: Router) => {
     const appConfig = useAppConfig()
 
     if (to.name !== LOGIN_PAGE) {
-      if (to.meta?.requireAuth && !authorize.token) {
+      if (to.meta?.requiresAuth && !authorize.token) {
         return { name: LOGIN_PAGE }
       } else {
         if (!authorize.isInstallRoutes) {
@@ -26,8 +26,8 @@ export const useGuard = (router: Router) => {
 
       appConfig.pushTabItem({
         label: (to.meta?.title as string) || '未命名',
-        // to: { name: to.name as string },
         name: to.name,
+        keepAlive: (to.meta?.keepAlive as boolean) || false,
         icon: (to.meta.icon as string) || '',
         to,
       })
