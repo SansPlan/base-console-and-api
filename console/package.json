@@ -13,8 +13,8 @@
     "format": "prettier --write src/"
   },
   "author": {
-    "name": "LearnOnce",
-    "url": "https://github.com/jk00000031"
+    "name": "IncreaseExp",
+    "url": "https://github.com/increase-exp"
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",

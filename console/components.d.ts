@@ -17,7 +17,7 @@ declare module 'vue' {
     Drawer: typeof import('./src/components/notification/Drawer.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
     List: typeof import('./src/components/notification/List.vue')['default']
-    Logo: typeof import('./src/components/learn-once/Logo.vue')['default']
+    Logo: typeof import('./src/components/@increase-exp/Logo.vue')['default']
     Menubar: typeof import('./src/components/layout/Menubar.vue')['default']
     MenubarDrawer: typeof import('./src/components/layout/MenubarDrawer.vue')['default']
     MenubarToggle: typeof import('./src/components/layout/MenubarToggle.vue')['default']
@@ -62,7 +62,7 @@ declare module 'vue' {
     TabBar: typeof import('./src/components/layout/TabBar.vue')['default']
     TabBarItem: typeof import('./src/components/layout/TabBarItem.vue')['default']
     Table: typeof import('./src/components/ui/table/Table.vue')['default']
-    UpdateLog: typeof import('./src/components/learn-once/UpdateLog.vue')['default']
-    Welcome: typeof import('./src/components/learn-once/Welcome.vue')['default']
+    UpdateLog: typeof import('./src/components/@increase-exp/UpdateLog.vue')['default']
+    Welcome: typeof import('./src/components/@increase-exp/Welcome.vue')['default']
   }
 }

@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'LearnMainView',
+      name: 'IeMainView',
       meta: {
         requiresAuth: true,
       },
@@ -17,12 +17,12 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'LearnLogin',
+      name: 'IeLogin',
       component: () => import('@/views/Login.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
-      name: 'LearnNotFound',
+      name: 'IeNotFound',
       component: NOT_FOUND_COMPONENT,
     },
   ],

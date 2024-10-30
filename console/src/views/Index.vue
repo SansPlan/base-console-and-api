@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { LearnOnceWelcome } from '@/components/learn-once'
+import { IeWelcome } from '@/components/@increase-exp'
 </script>
 
 <template>
-  <LearnOnceWelcome />
+  <IeWelcome />
 </template>

@@ -41,7 +41,7 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
   actions: {
     async getAuthorizeMenu() {
       this.menuRaw = routes
-      this.menuTree = convertListToTree(routes, 'LearnMainView')
+      this.menuTree = convertListToTree(routes, 'IeMainView')
     },
 
     async withInstallMenu(router: Router) {
@@ -107,13 +107,13 @@ function mapInstallMenu(router: Router, menus: ObjectAny[]): RouteRecordRaw[] {
       if (item.redirect) {
         route.redirect = item.redirect
       }
-      router.addRoute('LearnMainView', route)
+      router.addRoute('IeMainView', route)
       return route
     })
 }
 
 // 处理路由
-// 由于都是追加到 LearnMainView 的子集里面，因此路由左侧不能够有符号 /
+// 由于都是追加到 IeMainView 的子集里面，因此路由左侧不能够有符号 /
 // 当然顺手把右边的符号 / 也一起移除掉
 function formatPath(path: string) {
   return path.replace(/^\/+|\/+$/g, '')

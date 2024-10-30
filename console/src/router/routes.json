@@ -1,7 +1,7 @@
 [
   {
     "routerPath": "/",
-    "name": "LearnWelcome",
+    "name": "IeWelcome",
     "title": "欢迎页",
     "componentPath": "Index",
     "requiresAuth": true,
@@ -9,11 +9,11 @@
     "type": "menu",
     "showAside": false,
     "icon": "mdi:robot-outline",
-    "parentName": "LearnMainView"
+    "parentName": "IeMainView"
   },
   {
     "routerPath": "/dashboard",
-    "name": "LearnDashboard",
+    "name": "IeDashboard",
     "title": "数据面板",
     "componentPath": "dashboard/Index",
     "requiresAuth": true,
@@ -21,11 +21,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "solar:pie-chart-bold",
-    "parentName": "LearnMainView"
+    "parentName": "IeMainView"
   },
   {
     "routerPath": "/notification",
-    "name": "LearnNotification",
+    "name": "IeNotification",
     "title": "消息通知",
     "componentPath": "Notification",
     "requiresAuth": true,
@@ -33,11 +33,11 @@
     "type": "menu",
     "showAside": false,
     "icon": "hugeicons:notification-01",
-    "parentName": "LearnMainView"
+    "parentName": "IeMainView"
   },
   {
     "routerPath": "/permission",
-    "name": "LearnPermission",
+    "name": "IePermission",
     "title": "权限管理",
     "componentPath": "View",
     "requiresAuth": true,
@@ -45,11 +45,11 @@
     "type": "directory",
     "showAside": true,
     "icon": "icon-park-outline:permissions",
-    "parentName": "LearnMainView"
+    "parentName": "IeMainView"
   },
   {
     "routerPath": "/permission/menu",
-    "name": "LearnPermissionMenu",
+    "name": "IePermissionMenu",
     "title": "菜单按钮",
     "componentPath": "permission/menu/Index",
     "requiresAuth": true,
@@ -57,11 +57,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "bi:menu-button",
-    "parentName": "LearnPermission"
+    "parentName": "IePermission"
   },
   {
     "routerPath": "/permission/role",
-    "name": "LearnPermissionRole",
+    "name": "IePermissionRole",
     "title": "角色管理",
     "componentPath": "permission/Role",
     "requiresAuth": true,
@@ -69,11 +69,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:role-binding-outlined",
-    "parentName": "LearnPermission"
+    "parentName": "IePermission"
   },
   {
     "routerPath": "/permission/role-group",
-    "name": "LearnPermissionRoleGroup",
+    "name": "IePermissionRoleGroup",
     "title": "角色组",
     "componentPath": "permission/RoleGroup",
     "requiresAuth": true,
@@ -81,11 +81,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
-    "parentName": "LearnPermission"
+    "parentName": "IePermission"
   },
   {
     "routerPath": "/setting",
-    "name": "LearnSetting",
+    "name": "IeSetting",
     "title": "系统设置",
     "componentPath": "View",
     "requiresAuth": true,
@@ -93,11 +93,11 @@
     "type": "directory",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
-    "parentName": "LearnMainView"
+    "parentName": "IeMainView"
   },
   {
     "routerPath": "/setting/dict",
-    "name": "LearnSettingDict",
+    "name": "IeSettingDict",
     "title": "字典管理",
     "componentPath": "system/dict",
     "requiresAuth": true,
@@ -105,11 +105,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
-    "parentName": "LearnSetting"
+    "parentName": "IeSetting"
   },
   {
     "routerPath": "/setting/params",
-    "name": "LearnSettingParams",
+    "name": "IeSettingParams",
     "title": "全局参数管理",
     "componentPath": "system/params",
     "requiresAuth": true,
@@ -117,11 +117,11 @@
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
-    "parentName": "LearnSetting"
+    "parentName": "IeSetting"
   },
   {
     "routerPath": "/setting/cache",
-    "name": "LearnSettingCache",
+    "name": "IeSettingCache",
     "title": "缓存管理",
     "componentPath": "system/cache",
     "requiresAuth": true,
@@ -129,6 +129,6 @@
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:cluster-role",
-    "parentName": "LearnSetting"
+    "parentName": "IeSetting"
   }
 ]

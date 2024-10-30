@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type TabItem } from '@/stores/useAppConfig'
 import type { DropdownOption } from 'naive-ui'
-import { LearnOnceLogo } from '../learn-once'
+import { IeLogo } from '../@increase-exp'
 
 interface Prop {
   tab: TabItem
@@ -67,7 +67,7 @@ function handleContextMenuEvent(key: string | number) {
     @click="emit('select', tab)"
   >
     <Icon v-if="tab.icon" :icon="tab.icon" width="14" />
-    <LearnOnceLogo v-else :size="16" />
+    <IeLogo v-else :size="16" />
     <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"

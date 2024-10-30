@@ -30,8 +30,8 @@ export interface ThemeColorProvider {
   setThemeColor: (color: string) => void
 }
 
-export const themeModeStorageKey = 'LearnOnce-ThemeModeValue'
-export const themeColorStorageKey = 'LearnOnce-ThemeColorValue'
+export const themeModeStorageKey = 'IncreaseExp-ThemeModeValue'
+export const themeColorStorageKey = 'IncreaseExp-ThemeColorValue'
 
 const isPreferredDark = usePreferredDark()
 const isDark = useDark({

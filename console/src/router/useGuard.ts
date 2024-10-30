@@ -4,7 +4,7 @@ import type { Router } from 'vue-router'
 import { useThemeColor } from '@/composables/useThemeColor'
 import { useAppConfig } from '@/stores/useAppConfig'
 
-export const LOGIN_PAGE = 'LearnLogin'
+export const LOGIN_PAGE = 'IeLogin'
 
 export const useGuard = (router: Router) => {
   const { loadingBar } = useThemeColor()
@@ -24,8 +24,10 @@ export const useGuard = (router: Router) => {
         }
       }
 
+      const label: string = (to.meta?.title as string) || 'Unnamed'
+      document.title = `${label} | ${appConfig.siteName} (${appConfig.devSource})`
       appConfig.pushTabItem({
-        label: (to.meta?.title as string) || '未命名',
+        label,
         name: to.name,
         keepAlive: (to.meta?.keepAlive as boolean) || false,
         icon: (to.meta.icon as string) || '',

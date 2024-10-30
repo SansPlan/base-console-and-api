@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LearnOnceUpdateLog } from '.'
+import { IeUpdateLog } from '.'
 
 import { useAppConfig } from '@/stores/useAppConfig'
 
@@ -9,7 +9,7 @@ interface CloudActivity {
   href: string
 }
 
-const { siteName } = useAppConfig()
+const appConfig = useAppConfig()
 
 const cloudServiceActivity: CloudActivity[] = [
   { title: '通义灵码_智能编码助手', badge: '阿里', href: 'https://tongyi.aliyun.com/lingma/pricing?userCode=rvhutp2k' },
@@ -37,7 +37,7 @@ const cloudServiceActivity: CloudActivity[] = [
           <Icon icon="mdi:applause" class="text-orange-500" />
         </h1>
         <div class="space-y-1 mt-7">
-          <p>{{ siteName }} Console 为您提供快速开发业务而无需担心权限分配问题。</p>
+          <p>{{ appConfig.siteName }} 为您提供快速开发业务而无需担心权限分配问题。</p>
           <br />
           <p class="flex items-center gap-1 mb-2">
             <span>开源仓库 <em>(MIT 协议)</em>：</span>
@@ -46,7 +46,7 @@ const cloudServiceActivity: CloudActivity[] = [
                 <Icon icon="simple-icons:gitee" width="20" class="text-red-600" />
               </n-button>
             </a>
-            <a href="https://github.com/LearnOnce/learn-permission-control-admin" target="_blank">
+            <a href="https://github.com/IncreaseExp/learn-permission-control-admin" target="_blank">
               <n-button quaternary circle>
                 <Icon icon="simple-icons:github" width="20" />
               </n-button>
@@ -62,7 +62,7 @@ const cloudServiceActivity: CloudActivity[] = [
                 开始使用
               </n-button>
             </router-link>
-            <LearnOnceUpdateLog />
+            <IeUpdateLog />
           </p>
         </div>
       </div>
@@ -84,7 +84,7 @@ const cloudServiceActivity: CloudActivity[] = [
       </ul>
     </section>
     <footer class="py-6 text-sm text-center text-zinc-500">
-      <p>Copyright &copy;2024 {{ siteName }}</p>
+      <p>Copyright &copy;2024 {{ appConfig.siteName }} ({{ appConfig.devSource }})</p>
     </footer>
   </main>
 </template>

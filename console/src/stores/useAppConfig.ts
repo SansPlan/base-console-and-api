@@ -3,6 +3,8 @@ import type { RouteRecordNameGeneric, RouterLinkProps } from 'vue-router'
 export type SystemThemeMode = 'light' | 'dark' | 'system'
 
 export interface AppConfigState {
+  // 项目来源
+  devSource: string
   // 本站主题
   themeMode: SystemThemeMode
   // 网站名称，在 logo 旁边那个
@@ -59,16 +61,17 @@ export type AppConfigProvider = AppConfigState & AppConfigActions
 
 export const welcomeItem: TabItem = {
   label: '欢迎页',
-  name: 'LearnWelcome',
+  name: 'IeWelcome',
   keepAlive: false,
-  to: { name: 'LearnWelcome' },
+  to: { name: 'IeWelcome' },
 }
 export const storeName = 'appConfig'
 
 export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppConfigActions>(storeName, {
   state: () => ({
+    devSource: 'IncreaseExp',
     themeMode: 'system',
-    siteName: 'LearnOnce',
+    siteName: 'IE Console',
     collapse: false,
     menubarCollapseWidth: 52,
     menubarExpandWidth: 230,

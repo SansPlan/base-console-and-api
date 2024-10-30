@@ -1,6 +1,6 @@
 <img src="./console/public/favicon.ico" width="36" alt="logo" />
 
-## learn-permission-control-admin
+## exp-permission-control-admin
 
 > 项目正在开发...
 
@@ -21,4 +21,4 @@
 ---
 
 License: MIT  
-Copyright &copy;2024 LearnOnce
+Copyright &copy;2024 IncreaseExp
