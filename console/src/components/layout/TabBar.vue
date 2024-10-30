@@ -11,7 +11,7 @@ const appConfig = useAppConfig()
 watch(
   () => appConfig.currentTabKey,
   () => {
-    const currentItem = appConfig.tabBarItems.find(item => item.name === appConfig.currentTabKey)
+    const currentItem = appConfig.tabBarItems.filter(item => item).find(item => item.name === appConfig.currentTabKey)
     if (currentItem && currentItem.name !== route.name) {
       router.push(currentItem.to)
     }
@@ -62,7 +62,7 @@ function handleDropdownEvent(key: string | number) {
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
         <div class="flex items-center divide-x divide-zinc-100 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
-          <template v-for="(item, index) in appConfig.tabBarItems" :key="item.name">
+          <template v-for="(item, index) in appConfig.tabBarItems.filter(item => item)" :key="item.name">
             <TabBarItem
               :tab="item"
               :no-closable="item.name === welcomeItem.name"

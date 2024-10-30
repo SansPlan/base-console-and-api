@@ -32,7 +32,7 @@ const data = ref<any[]>(
 
 <template>
   <main class="p-3 space-y-3">
-    <fieldset class="px-4 py-2 bg-white border rounded-md">
+    <fieldset class="px-4 py-2 bg-white border rounded-md dark:bg-zinc-900 dark:border-zinc-800">
       <legend>
         <p class="flex items-center gap-1">
           <Icon icon="ic:outline-tips-and-updates" class="text-orange-500" width="16" />
@@ -44,6 +44,19 @@ const data = ref<any[]>(
         <p>当新建菜单后，会自动为该菜单新建 <n-tag size="tiny" round type="primary">CRUD</n-tag> 相关按钮权限。</p>
       </div>
     </fieldset>
-    <LTable remote :columns="columns" :data="data" />
+    <LTable remote flex-height :columns="columns" :data="data" class="p-2 bg-white rounded h-96 dark:bg-zinc-800" size="small">
+      <template #action>
+        <n-form inline label-placement="left" :show-feedback="false">
+          <n-form-item label="标题">
+            <n-input />
+          </n-form-item>
+        </n-form>
+      </template>
+      <template #action-right>
+        <n-button quaternary circle>
+          <Icon icon="lsicon:filter-outline" width="18" />
+        </n-button>
+      </template>
+    </LTable>
   </main>
 </template>

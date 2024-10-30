@@ -95,7 +95,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       this.collapse = !this.collapse
     },
     pushTabItem(route: TabItem) {
-      const findItem = this.tabBarItems.find(item => item.name === route.name)
+      const findItem = this.tabBarItems.filter(item => item).find(item => item.name === route.name)
       if (!findItem) {
         this.tabBarItems.push(route)
         this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].name
