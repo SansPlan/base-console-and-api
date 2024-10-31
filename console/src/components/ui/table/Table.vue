@@ -15,9 +15,6 @@ const dataTableBind = computed(() => {
 })
 
 const cols = ref<DataTableColumns>(props.columns)
-watch(cols, () => {
-  console.log(cols.value)
-})
 </script>
 
 <template>

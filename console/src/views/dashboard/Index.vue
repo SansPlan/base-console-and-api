@@ -17,6 +17,6 @@ import SankeyExample from './components/SankeyExample.vue'
 
 <script lang="ts">
 export default {
-  name: 'IeDashboard',
+  name: 'Dashboard',
 }
 </script>

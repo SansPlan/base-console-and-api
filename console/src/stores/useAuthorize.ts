@@ -1,7 +1,7 @@
 import { convertListToTree } from '@/lib/tree'
 import type { Router, RouteRecordNameGeneric, RouteRecordRaw } from 'vue-router'
 import routes from '@/router/routes.json'
-import { NOT_FOUND_COMPONENT } from '@/router'
+import { MAIN_VIEW, NOT_FOUND_COMPONENT } from '@/constants'
 
 interface AuthorizeState {
   // 登录凭证
@@ -19,6 +19,8 @@ interface AuthorizeState {
 }
 
 interface AuthroizeActions {
+  // 验证 token 是否过期
+  verifyTokenHasExpired: () => void
   // 获取授权菜单
   getAuthorizeMenu: () => void
   // 安装授权菜单
@@ -39,9 +41,11 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
     isInstallRoutes: false,
   }),
   actions: {
+    async verifyTokenHasExpired() {},
+
     async getAuthorizeMenu() {
       this.menuRaw = routes
-      this.menuTree = convertListToTree(routes, 'IeMainView')
+      this.menuTree = convertListToTree(routes, MAIN_VIEW.name)
     },
 
     async withInstallMenu(router: Router) {
@@ -107,7 +111,7 @@ function mapInstallMenu(router: Router, menus: ObjectAny[]): RouteRecordRaw[] {
       if (item.redirect) {
         route.redirect = item.redirect
       }
-      router.addRoute('IeMainView', route)
+      router.addRoute(MAIN_VIEW.name, route)
       return route
     })
 }

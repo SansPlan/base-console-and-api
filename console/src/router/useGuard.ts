@@ -1,10 +1,8 @@
 import { useAuthorize } from '@/stores/useAuthorize'
 import type { Router } from 'vue-router'
-// import { loadingBar } from '@/lib/naive-ui'
 import { useThemeColor } from '@/composables/useThemeColor'
 import { useAppConfig } from '@/stores/useAppConfig'
-
-export const LOGIN_PAGE = 'IeLogin'
+import { LOGIN_PAGE } from '@/constants'
 
 export const useGuard = (router: Router) => {
   const { loadingBar } = useThemeColor()
@@ -14,9 +12,9 @@ export const useGuard = (router: Router) => {
     const authorize = useAuthorize()
     const appConfig = useAppConfig()
 
-    if (to.name !== LOGIN_PAGE) {
+    if (to.name !== LOGIN_PAGE.name) {
       if (to.meta?.requiresAuth && !authorize.token) {
-        return { name: LOGIN_PAGE }
+        return { name: LOGIN_PAGE.name }
       } else {
         if (!authorize.isInstallRoutes) {
           await authorize.withInstallMenu(router)

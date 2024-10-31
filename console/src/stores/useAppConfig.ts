@@ -1,3 +1,4 @@
+import { FIXED_TABLE_ITEM } from '@/constants'
 import type { RouteRecordNameGeneric, RouterLinkProps } from 'vue-router'
 
 export type SystemThemeMode = 'light' | 'dark' | 'system'
@@ -59,19 +60,13 @@ export interface AppConfigActions {
 
 export type AppConfigProvider = AppConfigState & AppConfigActions
 
-export const welcomeItem: TabItem = {
-  label: '欢迎页',
-  name: 'IeWelcome',
-  keepAlive: false,
-  to: { name: 'IeWelcome' },
-}
 export const storeName = 'appConfig'
 
 export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppConfigActions>(storeName, {
   state: () => ({
-    devSource: 'IncreaseExp',
+    devSource: 'SansPlan',
     themeMode: 'system',
-    siteName: 'IE Console',
+    siteName: '控制台',
     collapse: false,
     menubarCollapseWidth: 52,
     menubarExpandWidth: 230,
@@ -79,8 +74,8 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
       top: '28px',
     },
     showTabBar: true,
-    currentTabKey: welcomeItem.name,
-    tabBarItems: [welcomeItem],
+    currentTabKey: FIXED_TABLE_ITEM.name,
+    tabBarItems: [FIXED_TABLE_ITEM],
     refreshTabPage: false,
   }),
   actions: {
@@ -109,7 +104,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     removeTabItem(index: number) {
       this.tabBarItems.splice(index, 1)
       if (this.tabBarItems.length === 1) {
-        this.currentTabKey = welcomeItem.name
+        this.currentTabKey = FIXED_TABLE_ITEM.name
       } else if (index > this.tabBarItems.length - 1) {
         this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].name
       } else {
@@ -122,12 +117,12 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     },
     removeOtherTabItems(index: number) {
       const item = this.tabBarItems[index]
-      this.tabBarItems = [welcomeItem, item]
+      this.tabBarItems = [FIXED_TABLE_ITEM, item]
       this.currentTabKey = item.name
     },
     removeAllTabItems() {
-      this.tabBarItems = [welcomeItem]
-      this.currentTabKey = welcomeItem.name
+      this.tabBarItems = [FIXED_TABLE_ITEM]
+      this.currentTabKey = FIXED_TABLE_ITEM.name
     },
   },
   persist: true,

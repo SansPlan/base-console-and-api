@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type TabItem } from '@/stores/useAppConfig'
 import type { DropdownOption } from 'naive-ui'
-import { IeLogo } from '../@increase-exp'
+import { SLogo } from '../_embed'
 
 interface Prop {
   tab: TabItem
@@ -61,13 +61,13 @@ function handleContextMenuEvent(key: string | number) {
 
 <template>
   <div
-    class="flex items-center flex-shrink-0 gap-2 px-2 overflow-hidden transition cursor-pointer select-none group h-navbar"
-    :class="isActive ? 'bg-zinc-100 dark:bg-zinc-700 dark:text-white' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-200'"
+    class="flex items-center flex-shrink-0 gap-2 px-2 overflow-hidden transition cursor-pointer select-none group h-navbar last:!border-r"
+    :class="isActive ? 'bg-zinc-100/80 dark:bg-zinc-800 dark:text-white' : 'hover:bg-zinc-100/80 dark:hover:bg-zinc-800 dark:text-zinc-200'"
     @contextmenu="handleContextMenu"
     @click="emit('select', tab)"
   >
     <Icon v-if="tab.icon" :icon="tab.icon" width="14" />
-    <IeLogo v-else :size="16" />
+    <SLogo v-else :size="14" />
     <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"

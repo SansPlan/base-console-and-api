@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 lg:p-40">
-    <div class="mx-auto text-zinc-600">
+    <div class="mx-auto text-zinc-600 dark:text-zinc-300">
       <h1 class="flex items-center gap-2 text-4xl font-semibold">
         <Icon icon="material-symbols:no-encryption-outline-sharp" />
         <span class="font-mono">404</span>
@@ -10,7 +10,7 @@
           您正在访问的地址为: <span class="ml-2 font-semibold text-black">{{ $route.fullPath }}</span>
         </p>
         <p>该地址不可访问的可能原因如下：</p>
-        <ul class="pl-8 text-black list-decimal">
+        <ul class="pl-8 text-black list-decimal dark:text-white">
           <li>无权限访问</li>
           <li>项目更新未调整跳转路由</li>
           <li>路由不存在</li>

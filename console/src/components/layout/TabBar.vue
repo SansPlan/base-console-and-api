@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useAppConfig, welcomeItem, type TabItem } from '@/stores/useAppConfig'
+import { useAppConfig, type TabItem } from '@/stores/useAppConfig'
+import { FIXED_TABLE_ITEM } from '@/constants'
 import TabBarItem from './TabBarItem.vue'
 import type { DropdownOption } from 'naive-ui'
 import { useSortable } from '@vueuse/integrations/useSortable'
@@ -58,14 +59,14 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div class="sticky inset-x-0 top-0 z-[1] hidden overflow-hidden bg-white border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
+  <div class="sticky inset-x-0 top-0 z-[1] hidden bg-white overflow-hidden border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
-        <div class="flex items-center divide-x divide-zinc-100 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
+        <div class="flex items-center divide-x divide-zinc-200/70 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
           <template v-for="(item, index) in appConfig.tabBarItems.filter(item => item)" :key="item.name">
             <TabBarItem
               :tab="item"
-              :no-closable="item.name === welcomeItem.name"
+              :no-closable="item.name === FIXED_TABLE_ITEM.name"
               :is-active="item.name === appConfig.currentTabKey"
               @close="() => appConfig.removeTabItem(index)"
               @close-other="() => appConfig.removeOtherTabItems(index)"

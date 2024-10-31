@@ -21,10 +21,10 @@ const messageList = ref<MessageItem[]>(
       <div
         v-for="item in messageList"
         :key="item.id"
-        class="space-y-2 transition cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800"
+        class="space-y-3 transition cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800"
         @click="emit('select', item)"
       >
-        <p class="text-sm font-semibold">{{ item.title }}</p>
+        <p class="text-sm">{{ item.title }}</p>
         <p class="flex gap-1">
           <n-tag v-for="tag in item.tag" :key="tag" size="small" type="info">{{ tag }}</n-tag>
         </p>

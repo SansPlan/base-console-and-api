@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IeUpdateLog } from '.'
+import { SUpdateLog } from '.'
 
 import { useAppConfig } from '@/stores/useAppConfig'
 
@@ -62,7 +62,7 @@ const cloudServiceActivity: CloudActivity[] = [
                 开始使用
               </n-button>
             </router-link>
-            <IeUpdateLog />
+            <SUpdateLog />
           </p>
         </div>
       </div>

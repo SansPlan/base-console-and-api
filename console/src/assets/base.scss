@@ -5,10 +5,10 @@
 @import url('./fonts/noto-sans-sc/index.scss');
 
 :root {
-  --learn-header-height: 48px;
-  --learn-tab-bar-height: 32px;
+  --site-header-height: 48px;
+  --site-tab-bar-height: 34px;
 
-  --learn-background: '#f5f5f7';
+  --site-background: '#f5f5f7';
 }
 
 body {
@@ -48,12 +48,12 @@ a:hover {
 }
 
 .bg-dot-grid {
-  --learn-bg-size: 20px;
-  --learn-radial-color: #ceced2;
-  background-size: var(--learn-bg-size) var(--learn-bg-size);
-  background-image: radial-gradient(var(--learn-radial-color) 1px, transparent 1px);
+  --site-bg-size: 20px;
+  --site-radial-color: #ceced2;
+  background-size: var(--site-bg-size) var(--site-bg-size);
+  background-image: radial-gradient(var(--site-radial-color) 1px, transparent 1px);
 }
 
 .dark .bg-dot-grid {
-  --learn-radial-color: #52525b;
+  --site-radial-color: #52525b;
 }

@@ -1,37 +1,37 @@
 <script lang="ts">
 export default {
-  name: 'IePermissionMenu',
+  name: 'PermissionMenu',
 }
 </script>
 
 <script setup lang="ts">
-import { LTable } from '@/components/ui/table'
-import type { DataTableColumns } from 'naive-ui'
+import MenuTree from './components/MenuTree.vue'
+import MenuInfo from './components/MenuInfo.vue'
+import routes from '@/router/routes.json'
 
-const columns: DataTableColumns = [
-  { title: '标题 1', key: 'title1' },
-  { title: '标题 2', key: 'title2' },
-  { title: '标题 3', key: 'title3' },
-  { title: '标题 4', key: 'title4' },
-  { title: '标题 5', key: 'title5' },
-  { title: '标题 6', key: 'title6' },
-]
+interface TreeNodeSelect {
+  type: string
+  value: ObjectAny | null
+}
 
-const data = ref<any[]>(
-  Array.from({ length: 20 }, (_, index) => ({
-    id: ++index,
-    title1: 'Test1',
-    title2: 'Test2',
-    title3: 'Test3',
-    title4: 'Test4',
-    title5: 'Test5',
-    title6: 'Test6',
-  })),
-)
+const menuTreeData = ref<any[]>(routes)
+
+const contextmenuOption = ref<TreeNodeSelect>({
+  type: '',
+  value: null,
+})
+
+function handleSelect(options: TreeNodeSelect) {
+  contextmenuOption.value = options
+}
+
+function handleUpdate() {
+  console.log('update')
+}
 </script>
 
 <template>
-  <main class="p-3 space-y-3">
+  <main class="p-3 space-y-3 h-pageHeight data-[tabbar=true]:h-pageHeight2 flex flex-col">
     <fieldset class="px-4 py-2 bg-white border rounded-md dark:bg-zinc-900 dark:border-zinc-800">
       <legend>
         <p class="flex items-center gap-1">
@@ -39,24 +39,19 @@ const data = ref<any[]>(
           <span>权限菜单</span>
         </p>
       </legend>
-      <div class="space-y-1">
-        <p>为避免后续权限问题出现，每个新建的数据都必须填写 PremissionCode 且后续不可更改。</p>
-        <p>当新建菜单后，会自动为该菜单新建 <n-tag size="tiny" round type="primary">CRUD</n-tag> 相关按钮权限。</p>
-      </div>
+      <ul class="pl-4 space-y-1 list-decimal">
+        <li>根目录作为虚拟数据节点，不允许进行操作</li>
+        <li>在路由树鼠标右键点击可调出菜单进行操作</li>
+        <li>当新建菜单后，会自动为该菜单新建 <n-tag size="tiny" round type="primary">CRUD</n-tag> 相关按钮权限；也支持自行添加按钮。</li>
+      </ul>
     </fieldset>
-    <LTable remote flex-height :columns="columns" :data="data" class="p-2 bg-white rounded h-96 dark:bg-zinc-800" size="small">
-      <template #action>
-        <n-form inline label-placement="left" :show-feedback="false">
-          <n-form-item label="标题">
-            <n-input />
-          </n-form-item>
-        </n-form>
-      </template>
-      <template #action-right>
-        <n-button quaternary circle>
-          <Icon icon="lsicon:filter-outline" width="18" />
-        </n-button>
-      </template>
-    </LTable>
+    <section class="flex flex-grow gap-3 overflow-hidden">
+      <n-scrollbar class="flex-shrink-0 bg-white border rounded-md w-80" content-class="px-2 py-1">
+        <MenuTree :options="menuTreeData" @select="handleSelect" />
+      </n-scrollbar>
+      <n-scrollbar class="flex-grow bg-white border rounded-md">
+        <MenuInfo :type="contextmenuOption.type" :options="contextmenuOption.value" @update="handleUpdate" />
+      </n-scrollbar>
+    </section>
   </main>
 </template>

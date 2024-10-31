@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       height: {
-        header: 'var(--learn-header-height)',
-        navbar: 'var(--learn-tab-bar-height)',
-        pageHeight: 'calc(100vh - var(--learn-header-height))',
-        pageHeight2: 'calc(100vh - var(--learn-header-height) - var(--learn-tab-bar-height))',
+        header: 'var(--site-header-height)',
+        navbar: 'var(--site-tab-bar-height)',
+        pageHeight: 'calc(100vh - var(--site-header-height))',
+        pageHeight2: 'calc(100vh - var(--site-header-height) - var(--site-tab-bar-height))',
       },
       colors: {
-        background: 'var(--learn-background)',
+        background: 'var(--site-background)',
       },
     },
   },

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { IeWelcome } from '@/components/@increase-exp'
+import { SWelcome } from '@/components/_embed'
 </script>
 
 <template>
-  <IeWelcome />
+  <SWelcome />
 </template>

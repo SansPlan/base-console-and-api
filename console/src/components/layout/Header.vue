@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IeLogo } from '../@increase-exp'
+import { SLogo } from '../_embed'
 import AccountPopover from '../AccountPopover.vue'
 import AppNotification from '../AppNotification.vue'
 import AppIndividualization from '../AppIndividualization.vue'
@@ -15,7 +15,7 @@ const appConfig = useAppConfig()
   <n-layout-header bordered class="h-header">
     <header class="flex items-center h-full gap-1 px-3 mx-auto container-full">
       <router-link to="/" class="flex items-center flex-shrink-0 gap-1 font-semibold">
-        <IeLogo :size="20" class="dark:text-white" />
+        <SLogo :size="20" class="dark:text-white" />
         <span class="mx-0.5 -mt-0.5 text-sm">{{ appConfig.siteName }}</span>
       </router-link>
 

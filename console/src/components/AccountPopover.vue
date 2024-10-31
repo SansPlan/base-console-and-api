@@ -43,14 +43,14 @@ function onLogout() {
         <Icon icon="mingcute:user-4-fill" width="20" class="text-black dark:text-white" />
       </n-avatar>
     </template>
-    <div class="w-56 p-2 py-2 bg-white rounded-md dark:bg-zinc-800">
+    <div class="w-56 p-2 py-2 bg-white rounded-md dark:bg-zinc-700">
       <div class="flex gap-3 py-2">
         <div class="flex-shrink-0">
-          <n-avatar circle />
+          <n-avatar circle bordered />
         </div>
         <div class="flex-grow">
           <h3 class="text-sm font-semibold">你的昵称</h3>
-          <p class="text-xs text-zinc-500">你的账号</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-300">你的账号</p>
         </div>
       </div>
       <p class="flex flex-wrap gap-1 mt-2">
@@ -58,16 +58,16 @@ function onLogout() {
         <n-tag size="small" type="info">项目主管</n-tag>
         <n-tag size="small" type="info">财务主管</n-tag>
       </p>
-      <hr class="my-3 border-t-zinc-200/60 dark:border-t-zinc-700/60" />
+      <hr class="my-3 border-t-zinc-200/60 dark:border-t-zinc-800/60" />
       <ul class="space-y-0.5">
         <li>
-          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-950 transition cursor-pointer">
+          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-600 transition cursor-pointer">
             <Icon icon="iconoir:user" width="18" />
             <p>你的简介</p>
           </div>
         </li>
         <li>
-          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-950 transition cursor-pointer" @click="onLogout">
+          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-600 transition cursor-pointer" @click="onLogout">
             <Icon icon="ic:round-logout" width="18" />
             <p>退出登录</p>
           </div>
