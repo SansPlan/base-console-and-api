@@ -61,17 +61,21 @@ function handleContextMenuEvent(key: string | number) {
 
 <template>
   <div
-    class="flex items-center flex-shrink-0 gap-2 px-2 overflow-hidden transition cursor-pointer select-none group h-navbar last:!border-r"
-    :class="isActive ? 'bg-zinc-100/80 dark:bg-zinc-800 dark:text-white' : 'hover:bg-zinc-100/80 dark:hover:bg-zinc-800 dark:text-zinc-200'"
+    class="flex items-center flex-shrink-0 gap-2 px-3 overflow-hidden transition rounded-full cursor-pointer select-none group h-4/5"
+    :class="
+      isActive
+        ? 'bg-zinc-800 text-white dark:bg-white dark:text-black'
+        : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200/80 dark:hover:bg-zinc-700 dark:text-zinc-200'
+    "
     @contextmenu="handleContextMenu"
     @click="emit('select', tab)"
   >
     <Icon v-if="tab.icon" :icon="tab.icon" width="14" />
-    <SLogo v-else :size="14" />
+    <SLogo v-else :size="14" :class="isActive && 'stroke-white dark:stroke-black'" />
     <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"
-      class="p-0.5 transition-all cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-950 rounded"
+      class="p-0.5 transition-all cursor-pointer hover:bg-zinc-600 dark:hover:bg-zinc-950 rounded"
       :class="isActive ? 'scale-100' : 'scale-0 group-hover:scale-100'"
       @click.prevent="emit('close')"
     >

@@ -61,11 +61,12 @@ function resolveMenu(tree: ObjectAny | ObjectAny[]) {
 <template>
   <n-menu
     :value="activeRouteName"
-    :indent="18"
+    :indent="22"
     :collapsed="appConfig.collapse"
     :collapsed-width="appConfig.menubarCollapseWidth"
     :options="resolveMenu(menuTree)"
     :render-label="renderMenuLabel"
     :render-icon="renderMenuIcon"
+    default-expand-all
   />
 </template>

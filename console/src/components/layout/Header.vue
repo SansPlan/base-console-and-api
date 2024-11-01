@@ -12,14 +12,9 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-  <n-layout-header bordered class="h-header">
+  <n-layout-header class="h-header">
     <header class="flex items-center h-full gap-1 px-3 mx-auto container-full">
-      <router-link to="/" class="flex items-center flex-shrink-0 gap-1 font-semibold">
-        <SLogo :size="20" class="dark:text-white" />
-        <span class="mx-0.5 -mt-0.5 text-sm">{{ appConfig.siteName }}</span>
-      </router-link>
-
-      <div class="flex items-center px-2">
+      <div class="flex items-center mr-2">
         <MenubarToggle v-if="!appConfig.isHomePage()" />
         <template v-else>
           <router-link to="/dashboard" class="hidden lg:inline">
@@ -29,6 +24,11 @@ const appConfig = useAppConfig()
           </router-link>
         </template>
       </div>
+
+      <router-link to="/" class="flex items-center flex-shrink-0 gap-0.5 font-semibold">
+        <SLogo :size="24" class="dark:text-white" />
+        <span class="mx-0.5 -mt-0.5 text-base">{{ appConfig.siteName }}</span>
+      </router-link>
 
       <MenubarDrawer />
 

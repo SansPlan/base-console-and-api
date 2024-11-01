@@ -12,8 +12,6 @@ const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.filte
     <Header />
     <n-layout has-sider position="absolute" class="!top-[var(--site-header-height)]">
       <n-layout-sider
-        v-if="!appConfig.isHomePage()"
-        bordered
         v-model:collapsed="appConfig.collapse"
         :native-scrollbar="false"
         :width="appConfig.menubarExpandWidth"
@@ -27,7 +25,7 @@ const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.filte
       >
         <Menubar />
       </n-layout-sider>
-      <n-layout-content :native-scrollbar="false" embedded>
+      <n-layout-content :native-scrollbar="false">
         <TabBar v-if="appConfig.showTabBar" />
         <router-view v-slot="{ Component, route }">
           <keep-alive :include="getKeepAliveInclude">

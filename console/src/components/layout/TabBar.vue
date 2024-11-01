@@ -59,10 +59,10 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div class="sticky inset-x-0 top-0 z-[1] hidden bg-white overflow-hidden border-b dark:bg-zinc-900 h-navbar border-zinc-200 dark:border-zinc-800 lg:block">
+  <div class="sticky inset-x-0 top-0 z-[1] hidden bg-white overflow-hidden h-navbar dark:bg-zinc-900 lg:block">
     <div class="flex items-center">
       <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
-        <div class="flex items-center divide-x divide-zinc-200/70 dark:divide-zinc-700 h-navbar" ref="scrollContainerRef">
+        <div class="flex items-center gap-2 px-2 h-navbar" ref="scrollContainerRef">
           <template v-for="(item, index) in appConfig.tabBarItems.filter(item => item)" :key="item.name">
             <TabBarItem
               :tab="item"
@@ -80,8 +80,8 @@ function handleDropdownEvent(key: string | number) {
       </div>
       <div class="flex items-center flex-shrink-0 px-2">
         <n-dropdown trigger="click" :options="options" @select="handleDropdownEvent">
-          <n-button circle quaternary size="small">
-            <Icon icon="icon-park-outline:more" width="20" />
+          <n-button circle quaternary>
+            <Icon icon="mdi:more-horiz" width="20" />
           </n-button>
         </n-dropdown>
       </div>

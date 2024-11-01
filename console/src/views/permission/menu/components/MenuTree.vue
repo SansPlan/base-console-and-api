@@ -18,7 +18,7 @@ const tree = computed(() => {
   return [
     {
       title: '根路由',
-      name: 'root',
+      name: MAIN_VIEW.name,
       disabled: true,
       children: convertListToTree(options, MAIN_VIEW.name),
     },
@@ -27,6 +27,7 @@ const tree = computed(() => {
 
 // 右键事件选择的菜单路由
 const selectOption = ref<any>()
+const contextmenuOption = ref<any>()
 const checkedKeys = computed(() => [selectOption.value?.name].filter(item => item))
 
 // Tree Node 右键事件选项
@@ -38,82 +39,56 @@ const dropdownReactive = shallowReactive({
 const nodeContextmenuOptions = computed<DropdownOption[]>(() => {
   return [
     {
-      key: 'header',
       type: 'render',
+      key: 'header',
       render: () =>
-        h('div', { class: 'p-2 text-xs text-zinc-500 dark:text-zinc-300 space-y-1 w-32' }, [
-          h('p', '对该路由进行操作'),
-          h('p', { class: 'text-sm text-black dark:text-white' }, selectOption.value.title),
-        ]),
+        h(
+          'div',
+          {
+            class: 'px-3 py-2.5 dark:text-white',
+          },
+          [
+            h('p', { class: 'flex items-center gap-2' }, [
+              h(Icon, { icon: 'file-icons:actionscript', class: 'text-orange-500 dark:text-orange-300' }),
+              h('span', `${contextmenuOption.value.title} 动作`),
+            ]),
+          ],
+        ),
     },
     {
-      key: 'header-divider',
       type: 'divider',
+      key: 'HeaderDivider',
     },
     {
       label: '新建子级',
-      key: 'createChildrenItem',
+      key: 'createChildNode',
       icon() {
         return h(Icon, {
           icon: 'icon-park-outline:add-web',
           size: 18,
         })
       },
-      props: {
-        onClick() {
-          emit('select', {
-            type: 'NewChildNode',
-            value: unref(selectOption),
-          })
-        },
-      },
     },
     {
       label: '编辑',
-      key: 'modify',
-      disabled: selectOption.value?.name === 'root',
+      key: 'edit',
+      disabled: contextmenuOption.value?.name === MAIN_VIEW.name,
       icon() {
         return h(Icon, {
           icon: 'cuida:edit-outline',
           size: 18,
         })
       },
-      props: {
-        onClick() {
-          emit('select', {
-            type: 'EditOneself',
-            value: unref(selectOption),
-          })
-        },
-      },
     },
     {
       label: '删除',
       key: 'delete',
-      disabled: selectOption.value?.name === 'root',
+      disabled: contextmenuOption.value?.name === MAIN_VIEW.name,
       icon() {
         return h(Icon, {
           icon: 'f7:delete-left',
           size: 18,
         })
-      },
-      props: {
-        onClick() {
-          const d = dialog.warning({
-            title: '权限提示',
-            content: `请确保路由 ${selectOption.value.title} 已撤销所有入口，避免路由删除后点击出现错误！`,
-            negativeText: '取消',
-            positiveText: '我已经确认',
-            onPositiveClick() {
-              d.loading = true
-              return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  resolve(true)
-                }, 1500)
-              })
-            },
-          })
-        },
       },
     },
   ]
@@ -124,14 +99,16 @@ const onHideDropdown = () => (dropdownReactive.show = false)
 function nodeProps({ option }: { option: TreeOption }) {
   return {
     onClick() {
-      selectOption.value = option
-      emit('select', {
-        type: 'EditOneself',
-        value: unref(option),
-      })
+      if (option.name !== MAIN_VIEW.name) {
+        selectOption.value = option
+        emit('select', {
+          type: 'EditOneself',
+          value: unref(option),
+        })
+      }
     },
     onContextmenu(e: MouseEvent): void {
-      selectOption.value = option
+      contextmenuOption.value = option
       dropdownReactive.show = true
       dropdownReactive.offsetX = e.clientX
       dropdownReactive.offsetY = e.clientY
@@ -139,10 +116,51 @@ function nodeProps({ option }: { option: TreeOption }) {
     },
   }
 }
+
+function handleDropdownSelect(key: string) {
+  switch (key) {
+    case 'createChildNode':
+      selectOption.value = contextmenuOption.value
+      emit('select', {
+        type: 'NewChildNode',
+        value: unref(contextmenuOption),
+      })
+      break
+    case 'edit':
+      selectOption.value = contextmenuOption.value
+      emit('select', {
+        type: 'EditOneself',
+        value: unref(contextmenuOption),
+      })
+      break
+    case 'delete':
+      const d = dialog.warning({
+        title: '权限提示',
+        content: `请确保路由 ${contextmenuOption.value.title} 已撤销所有入口，避免路由删除后点击出现错误！`,
+        negativeText: '取消',
+        positiveText: '我已经确认',
+        onPositiveClick() {
+          d.loading = true
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(true)
+            }, 1500)
+          })
+        },
+      })
+      break
+    default:
+      console.log('未触发任何选项')
+      break
+  }
+  onHideDropdown()
+}
 </script>
 
 <template>
-  <n-tree :selected-keys="checkedKeys" :data="tree" block-line default-expand-all key-field="name" label-field="title" selectable :node-props="nodeProps" />
+  <n-config-provider :theme-overrides="{ Tree: { lineHeight: 2.5, nodeWrapperPadding: '0', nodeBorderRadius: '5px' } }">
+    <n-tree :selected-keys="checkedKeys" :data="tree" block-line default-expand-all key-field="name" label-field="title" selectable :node-props="nodeProps" />
+  </n-config-provider>
   <n-dropdown
     trigger="manual"
     placement="bottom-start"
@@ -150,7 +168,8 @@ function nodeProps({ option }: { option: TreeOption }) {
     :options="nodeContextmenuOptions"
     :x="dropdownReactive.offsetX"
     :y="dropdownReactive.offsetY"
-    @select="onHideDropdown"
+    @select="handleDropdownSelect"
     @clickoutside="onHideDropdown"
+    class="w-44"
   />
 </template>

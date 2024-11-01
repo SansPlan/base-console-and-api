@@ -58,16 +58,13 @@ if (storageMode) {
 }
 
 // 预设覆盖主题
-const { cloned: themeOverrides, sync } = useCloned<GlobalThemeOverrides & ObjectAny>({
+const { cloned: themeOverrides, sync } = useCloned<GlobalThemeOverrides>({
   common: {
     primaryColor: '#2563eb',
     primaryColorHover: '#3b82f6',
     primaryColorPressed: '#1d4ed8',
     primaryColorSuppl: '#3b82f6',
     borderRadius: '4px',
-  },
-  Menu: {
-    itemHeight: '36px',
   },
   Tooltip: {
     boxShadow: '0 3px 6px -4px rgba(0, 0, 0, .12), 0 0px 8px 0 rgba(0, 0, 0, .08), 0 5px 16px 4px rgba(0, 0, 0, .05)',
@@ -151,15 +148,15 @@ function setThemeColor(color: string) {
   ;({ loadingBar } = getLoadingBar(themeOverrides.value))
 }
 
-const cacheColor = localStorage.getItem(themeColorStorageKey)
-if (cacheColor) setThemeColor(cacheColor)
+const initColor = localStorage.getItem(themeColorStorageKey) || themeOverrides.value.common?.primaryColor
+if (initColor) setThemeColor(initColor)
 
 function syncThemeOverrides() {
-  sync()
   localStorage.removeItem(themeColorStorageKey)
+  sync()
+  setThemeColor(themeOverrides.value.common?.primaryColor as string)
 }
 
-// Q1: useThemeColor 代码中到底什么原因造成的 ref 绑定失效？
 export const useThemeColor = (): ThemeColorProvider => {
   return {
     themeMode,

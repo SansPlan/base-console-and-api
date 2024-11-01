@@ -107,8 +107,6 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
         this.currentTabKey = FIXED_TABLE_ITEM.name
       } else if (index > this.tabBarItems.length - 1) {
         this.currentTabKey = this.tabBarItems[this.tabBarItems.length - 1].name
-      } else {
-        this.currentTabKey = this.tabBarItems[index].name
       }
     },
     removeRightTabItems(index: number) {

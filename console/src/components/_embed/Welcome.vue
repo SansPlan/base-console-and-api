@@ -28,16 +28,17 @@ const cloudServiceActivity: CloudActivity[] = [
 </script>
 
 <template>
-  <main class="bg-white dark:bg-zinc-900">
-    <section class="py-8 mb-4 lg:mb-8 lg:pb-12 lg:pt-16 bg-dot-grid bg-zinc-100/80 dark:bg-zinc-950">
+  <main class="p-4">
+    <section class="py-8 mb-4 rounded-3xl lg:pb-16 lg:pt-20 bg-dot-grid bg-zinc-100/80 dark:bg-zinc-950">
       <div class="max-w-6xl px-4 mx-auto lg:px-8">
         <h1 class="flex items-center gap-3 text-2xl font-semibold">
           <span>欢迎回来！</span>
           <span>Guest</span>
           <Icon icon="mdi:applause" class="text-orange-500" />
         </h1>
-        <div class="space-y-1 mt-7">
+        <div class="space-y-0.5 mt-7">
           <p>{{ appConfig.siteName }} 为您提供快速开发业务而无需担心权限分配问题。</p>
+          <p>该项目对于多端适应的支持度不高，在紧急使用的情况下请自行实现。</p>
           <br />
           <p class="flex items-center gap-1 mb-2">
             <span>开源仓库 <em>(MIT 协议)</em>：</span>
@@ -70,14 +71,14 @@ const cloudServiceActivity: CloudActivity[] = [
     <section class="max-w-6xl px-4 py-2 mx-auto space-y-4 lg:p-8">
       <h3 class="text-xl font-semibold">云服务优惠推荐</h3>
       <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        <li v-for="item in cloudServiceActivity" :key="item.href" class="flex flex-col p-3 transition border rounded dark:border-zinc-700 hover:shadow-lg">
-          <div class="flex-grow mb-4">
+        <li v-for="item in cloudServiceActivity" :key="item.href" class="flex flex-col p-3 transition border rounded-xl dark:border-zinc-700 hover:shadow-lg">
+          <div class="flex-grow mb-4 text-sm">
             <p>{{ item.title }}</p>
           </div>
           <p class="flex items-center justify-between">
-            <n-tag type="info" size="small">{{ item.badge }}</n-tag>
+            <n-tag type="info">{{ item.badge }}</n-tag>
             <a :href="item.href" target="_blank">
-              <n-button type="primary" size="small">访问链接</n-button>
+              <n-button type="primary" text>访问链接</n-button>
             </a>
           </p>
         </li>
