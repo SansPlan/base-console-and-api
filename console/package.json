@@ -13,8 +13,8 @@
     "format": "prettier --write src/"
   },
   "author": {
-    "name": "IncreaseExp",
-    "url": "https://github.com/increase-exp"
+    "name": "SansPlan",
+    "url": "https://github.com/SansPlan"
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",

@@ -68,7 +68,7 @@ const cloudServiceActivity: CloudActivity[] = [
         </div>
       </div>
     </section>
-    <section class="max-w-6xl px-4 py-2 mx-auto space-y-4 lg:p-8">
+    <section class="max-w-6xl py-2 mx-auto space-y-4 lg:p-8">
       <h3 class="text-xl font-semibold">云服务优惠推荐</h3>
       <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         <li v-for="item in cloudServiceActivity" :key="item.href" class="flex flex-col p-3 transition border rounded-xl dark:border-zinc-700 hover:shadow-lg">

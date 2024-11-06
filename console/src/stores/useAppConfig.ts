@@ -66,7 +66,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
   state: () => ({
     devSource: 'SansPlan',
     themeMode: 'system',
-    siteName: '控制台',
+    siteName: 'Sans',
     collapse: false,
     menubarCollapseWidth: 52,
     menubarExpandWidth: 230,

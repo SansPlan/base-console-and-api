@@ -31,11 +31,11 @@ function handleUpdate() {
 </script>
 
 <template>
-  <main class="p-3 pr-0 h-pageHeight data-[tabbar=true]:h-pageHeight2 flex gap-3">
-    <n-scrollbar class="sticky top-0 bg-white border rounded-lg dark:bg-zinc-900 dark:border-zinc-800 w-80" content-class="px-3 py-2">
+  <main class="h-pageHeight data-[tabbar=true]:h-pageHeight2 flex">
+    <n-scrollbar class="bg-white border-r dark:bg-zinc-900 dark:border-zinc-800 w-80" content-class="px-3 py-2">
       <MenuTree :options="menuTreeData" @select="handleSelect" />
     </n-scrollbar>
-    <n-scrollbar class="flex-grow" content-class="space-y-4">
+    <n-scrollbar class="flex-grow" content-class="p-4 space-y-4">
       <fieldset class="px-4 py-3 bg-white border rounded-lg dark:bg-zinc-900 dark:border-zinc-800">
         <legend class="text-base">
           <p class="flex items-center gap-1">

@@ -7,8 +7,8 @@ const appConfig = useAppConfig()
 <template>
   <n-button quaternary @click="appConfig.toggleCollapse" circle class="hidden lg:inline-flex">
     <transition name="fade">
-      <Icon v-if="appConfig.collapse" icon="fluent:pane-close-24-regular" width="22" />
-      <Icon v-else icon="fluent:pane-open-24-regular" width="22" />
+      <Icon v-if="appConfig.collapse" icon="fluent:pane-close-24-regular" width="20" />
+      <Icon v-else icon="fluent:pane-open-24-regular" width="20" />
     </transition>
   </n-button>
 </template>

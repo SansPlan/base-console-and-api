@@ -66,6 +66,9 @@ const { cloned: themeOverrides, sync } = useCloned<GlobalThemeOverrides>({
     primaryColorSuppl: '#3b82f6',
     borderRadius: '4px',
   },
+  Menu: {
+    itemHeight: '36px',
+  },
   Tooltip: {
     boxShadow: '0 3px 6px -4px rgba(0, 0, 0, .12), 0 0px 8px 0 rgba(0, 0, 0, .08), 0 5px 16px 4px rgba(0, 0, 0, .05)',
   },

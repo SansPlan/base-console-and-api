@@ -63,24 +63,12 @@
     "routerPath": "/permission/role",
     "name": "PermissionRole",
     "title": "角色管理",
-    "componentPath": "permission/Role",
+    "componentPath": "permission/role/Role",
     "requiresAuth": true,
     "keepAlive": true,
     "type": "menu",
     "showAside": true,
     "icon": "eos-icons:role-binding-outlined",
-    "parentName": "Permission"
-  },
-  {
-    "routerPath": "/permission/role-group",
-    "name": "PermissionRoleGroup",
-    "title": "角色组",
-    "componentPath": "permission/RoleGroup",
-    "requiresAuth": true,
-    "keepAlive": true,
-    "type": "menu",
-    "showAside": true,
-    "icon": "eos-icons:cluster-role",
     "parentName": "Permission"
   },
   {

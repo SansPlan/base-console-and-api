@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SWelcome } from '@/components/_embed'
+import { SWelcome } from '@/components/uninportance'
 </script>
 
 <template>

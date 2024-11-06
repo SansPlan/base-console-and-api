@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type TabItem } from '@/stores/useAppConfig'
 import type { DropdownOption } from 'naive-ui'
-import { SLogo } from '../_embed'
+import { SLogo } from '../uninportance'
 
 interface Prop {
   tab: TabItem
@@ -61,22 +61,18 @@ function handleContextMenuEvent(key: string | number) {
 
 <template>
   <div
-    class="flex items-center flex-shrink-0 gap-2 px-3 overflow-hidden transition rounded-full cursor-pointer select-none group h-4/5"
-    :class="
-      isActive
-        ? 'bg-zinc-800 text-white dark:bg-white dark:text-black'
-        : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200/80 dark:hover:bg-zinc-700 dark:text-zinc-200'
-    "
+    class="flex items-center flex-shrink-0 h-full gap-2 px-3 overflow-hidden transition cursor-pointer select-none group"
+    :class="isActive ? 'bg-zinc-200/65 dark:bg-black' : ''"
     @contextmenu="handleContextMenu"
     @click="emit('select', tab)"
   >
     <Icon v-if="tab.icon" :icon="tab.icon" width="14" />
-    <SLogo v-else :size="14" :class="isActive && 'stroke-white dark:stroke-black'" />
+    <SLogo v-else :size="14" />
     <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"
-      class="p-0.5 transition-all cursor-pointer hover:bg-zinc-600 dark:hover:bg-zinc-950 rounded"
-      :class="isActive ? 'scale-100' : 'scale-0 group-hover:scale-100'"
+      class="p-0.5 transition-all cursor-pointer dark:hover:bg-zinc-950 rounded -mr-1"
+      :class="isActive ? 'scale-100 hover:bg-zinc-300' : 'scale-0 group-hover:scale-100 hover:bg-zinc-300'"
       @click.prevent="emit('close')"
     >
       <Icon icon="mi:close" width="14" />
