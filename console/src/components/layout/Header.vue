@@ -14,7 +14,7 @@ const appConfig = useAppConfig()
 <template>
   <n-layout-header class="relative z-10 h-header" bordered>
     <header class="flex items-center h-full gap-1 px-3 mx-auto container-full">
-      <router-link to="/" class="flex items-center flex-shrink-0 gap-0.5">
+      <router-link to="/" class="flex items-center flex-shrink-0 gap-0.5 text-zinc-950">
         <SLogo :size="19" class="dark:text-white" />
         <span class="mx-0.5 -mt-0.5 text-base font-semibold">{{ appConfig.siteName }}</span>
       </router-link>

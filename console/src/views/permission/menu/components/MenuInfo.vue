@@ -143,6 +143,12 @@ function handleSave() {
         <n-form-item label="父级路由" path="parentId">
           <n-tree-select v-model:value="fields.parentId" :options="tree" label-field="title" key-field="name" default-expand-all show-path />
         </n-form-item>
+        <n-form-item label="路由标识" path="name">
+          <div class="flex-grow">
+            <n-input v-model:value="fields.name" />
+            <p class="mt-1 text-xs text-zinc-400 dark:text-zinc-300">路由标识需要保持唯一，否则在加载后会导致覆盖前面标识一致的路由</p>
+          </div>
+        </n-form-item>
         <n-form-item label="标题" path="title">
           <n-input v-model:value="fields.title" />
         </n-form-item>

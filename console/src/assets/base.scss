@@ -5,7 +5,7 @@
 @import url('./fonts/noto-sans-sc/index.scss');
 
 :root {
-  --site-header-height: 56px;
+  --site-header-height: 44px;
   --site-tab-bar-height: 36px;
 
   --site-background: '#f5f5f7';
@@ -37,14 +37,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  @apply transition;
-}
-
-a:hover {
-  @apply text-blue-500;
 }
 
 .bg-dot-grid {
