@@ -5,8 +5,8 @@ import { useAppConfig } from '@/stores/useAppConfig'
 import { LOGIN_PAGE } from '@/constants'
 
 export const useGuard = (router: Router) => {
+  const { loadingBar } = useThemeColor()
   router.beforeEach(async (to, from) => {
-    const { loadingBar } = useThemeColor()
     loadingBar.start()
 
     const authorize = useAuthorize()
@@ -35,7 +35,6 @@ export const useGuard = (router: Router) => {
   })
 
   router.afterEach(() => {
-    const { loadingBar } = useThemeColor()
     loadingBar.finish()
   })
 

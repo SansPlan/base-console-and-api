@@ -1,4 +1,4 @@
 import { NDataTable } from 'naive-ui'
 
-export { default as LTableColumns } from './Columns.vue'
-export { default as LTable } from './Table.vue'
+export { default as STableColumns } from './Columns.vue'
+export { default as STable } from './Table.vue'

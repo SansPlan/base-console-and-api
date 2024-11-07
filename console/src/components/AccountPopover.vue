@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuthorize } from '@/stores/useAuthorize'
 import { useAppConfig } from '@/stores/useAppConfig'
+import { LOGIN_PAGE } from '@/constants'
 
 interface Prop {
   size: number | 'small' | 'medium' | 'large' | undefined
@@ -26,53 +27,56 @@ function onLogout() {
     closable: false,
     negativeText: '取消',
     positiveText: '继续退出',
+    onNegativeClick() {
+      d.destroy()
+    },
     onPositiveClick() {
       d.destroy()
       withLogout(router)
       removeAllTabItems()
-      router.push('/login')
+      router.push({ name: LOGIN_PAGE.name })
     },
   })
 }
 </script>
 
 <template>
-  <n-popover trigger="click" raw class="rounded-md" :show-arrow="false">
+  <n-popover trigger="click" raw class="p-4 bg-white rounded-2xl dark:bg-zinc-700">
     <template #trigger>
       <n-avatar circle class="bg-white cursor-pointer dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-700" :size="size">
         <Icon icon="mingcute:user-4-fill" width="20" class="text-black dark:text-white" />
       </n-avatar>
     </template>
-    <div class="w-56 p-2 py-2 bg-white rounded-md dark:bg-zinc-700">
-      <div class="flex gap-3 py-2">
-        <div class="flex-shrink-0">
-          <n-avatar circle bordered />
+    <div class="py-4 w-80">
+      <div class="text-center">
+        <p class="text-xs text-zinc-500 dark:text-zinc-300">849989428@qq.com</p>
+        <div class="flex items-center justify-center w-16 h-16 mx-auto mt-5 mb-2 overflow-hidden rounded-full bg-zinc-100">
+          <img src="" alt="Avatar" />
         </div>
         <div class="flex-grow">
-          <h3 class="text-sm font-semibold">你的昵称</h3>
-          <p class="text-xs text-zinc-500 dark:text-zinc-300">你的账号</p>
+          <h3 class="text-lg font-semibold">用户昵称，你好！</h3>
         </div>
       </div>
-      <p class="flex flex-wrap gap-1 mt-2">
+      <p class="flex flex-wrap justify-center gap-1 mt-2">
         <n-tag size="small" type="info">超级管理员</n-tag>
         <n-tag size="small" type="info">项目主管</n-tag>
         <n-tag size="small" type="info">财务主管</n-tag>
       </p>
-      <hr class="my-3 border-t-zinc-200/60 dark:border-t-zinc-800/60" />
-      <ul class="space-y-0.5">
-        <li>
-          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-600 transition cursor-pointer">
+      <br />
+      <div class="grid grid-cols-2 gap-3">
+        <n-button round size="large">
+          <template #icon>
             <Icon icon="iconoir:user" width="18" />
-            <p>你的简介</p>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-600 transition cursor-pointer" @click="onLogout">
+          </template>
+          你的简介
+        </n-button>
+        <n-button round size="large" @click="onLogout">
+          <template #icon>
             <Icon icon="ic:round-logout" width="18" />
-            <p>退出登录</p>
-          </div>
-        </li>
-      </ul>
+          </template>
+          退出登录
+        </n-button>
+      </div>
     </div>
   </n-popover>
 </template>

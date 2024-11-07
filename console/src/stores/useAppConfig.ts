@@ -121,6 +121,7 @@ export const useAppConfig = defineStore<string, AppConfigState, ObjectAny, AppCo
     removeAllTabItems() {
       this.tabBarItems = [FIXED_TABLE_ITEM]
       this.currentTabKey = FIXED_TABLE_ITEM.name
+      console.log('Clean All Tags:', FIXED_TABLE_ITEM.name, this.currentTabKey)
     },
   },
   persist: true,

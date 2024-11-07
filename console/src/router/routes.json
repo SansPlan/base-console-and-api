@@ -72,6 +72,18 @@
     "parentName": "Permission"
   },
   {
+    "routerPath": "/permission/users",
+    "name": "PermissionUser",
+    "title": "人员管理",
+    "componentPath": "permission/user/Index",
+    "requiresAuth": true,
+    "keepAlive": true,
+    "type": "menu",
+    "showAside": true,
+    "icon": "mage:users",
+    "parentName": "Permission"
+  },
+  {
     "routerPath": "/setting",
     "name": "Setting",
     "title": "系统设置",

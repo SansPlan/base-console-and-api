@@ -19,10 +19,12 @@ interface AuthorizeState {
 }
 
 interface AuthroizeActions {
+  // 设置 token
+  setToken: (token: string) => void
   // 验证 token 是否过期
   verifyTokenHasExpired: () => void
   // 获取授权菜单
-  getAuthorizeMenu: () => void
+  getAuthorizeMenu: () => Promise<void>
   // 安装授权菜单
   withInstallMenu: (router: Router) => Promise<boolean>
   // 卸载授权路由
@@ -33,7 +35,7 @@ interface AuthroizeActions {
 
 export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, AuthroizeActions>('authorize', {
   state: () => ({
-    token: 'test',
+    token: '',
     userInfo: {},
     menuRaw: [],
     menuTree: [],
@@ -41,11 +43,16 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
     isInstallRoutes: false,
   }),
   actions: {
+    setToken(token) {
+      this.token = token
+    },
     async verifyTokenHasExpired() {},
 
     async getAuthorizeMenu() {
-      this.menuRaw = routes
-      this.menuTree = convertListToTree(routes, MAIN_VIEW.name)
+      return new Promise<void>((resolve, reject) => {
+        this.menuRaw = routes
+        this.menuTree = convertListToTree(routes, MAIN_VIEW.name)
+      })
     },
 
     async withInstallMenu(router: Router) {
@@ -80,9 +87,9 @@ export const useAuthorize = defineStore<string, AuthorizeState, ObjectAny, Authr
       this.uninstallRouteMenus(router)
     },
   },
-  // persist: {
-  //   pick: ['token', 'userInfo', 'menu'],
-  // },
+  persist: {
+    pick: ['token', 'userInfo', 'menu'],
+  },
 })
 
 // 递归授权路由树到路由

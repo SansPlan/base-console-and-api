@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DataTableColumns } from 'naive-ui'
-import { LTableColumns } from '.'
+import { STableColumns } from '.'
 import { tableProps } from './composable/useTableProps'
 import { cn } from '@/lib/tailwindcss'
 
@@ -25,7 +25,7 @@ const cols = ref<DataTableColumns>(props.columns)
       </div>
       <div class="flex items-center flex-shrink-0 gap-1">
         <slot name="action-right" />
-        <LTableColumns :columns="props.columns" @update-columns="(columns: DataTableColumns) => (cols = columns)" />
+        <STableColumns :columns="props.columns" @update-columns="(columns: DataTableColumns) => (cols = columns)" />
       </div>
     </div>
     <n-data-table v-bind="dataTableBind" :columns="cols" />

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppConfig, type TabItem } from '@/stores/useAppConfig'
-import { FIXED_TABLE_ITEM } from '@/constants'
+import { FIXED_TABLE_ITEM, LOGIN_PAGE } from '@/constants'
 import TabBarItem from './TabBarItem.vue'
 import type { DropdownOption } from 'naive-ui'
 import { useSortable } from '@vueuse/integrations/useSortable'
@@ -8,16 +8,6 @@ import { useSortable } from '@vueuse/integrations/useSortable'
 const route = useRoute()
 const router = useRouter()
 const appConfig = useAppConfig()
-
-watch(
-  () => appConfig.currentTabKey,
-  () => {
-    const currentItem = appConfig.tabBarItems.filter(item => item).find(item => item.name === appConfig.currentTabKey)
-    if (currentItem && currentItem.name !== route.name) {
-      router.push(currentItem.to)
-    }
-  },
-)
 
 function handleSelectItem(item: TabItem) {
   if (item.name !== route.name) {
