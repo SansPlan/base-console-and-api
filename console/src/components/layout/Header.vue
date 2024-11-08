@@ -12,7 +12,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-  <n-layout-header class="relative z-10 h-header" bordered>
+  <n-layout-header class="relative z-10 h-header">
     <header class="flex items-center h-full gap-1 px-3 mx-auto container-full">
       <router-link to="/" class="flex items-center flex-shrink-0 gap-0.5 text-zinc-950">
         <SLogo :size="19" class="dark:text-white" />

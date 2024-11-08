@@ -49,12 +49,10 @@ function handleDropdownEvent(key: string | number) {
 </script>
 
 <template>
-  <div
-    class="sticky inset-x-0 top-0 z-[1] hidden overflow-hidden bg-white border-b border-zinc-200/75 dark:border-zinc-700/75 h-navbar dark:bg-zinc-900 lg:block"
-  >
+  <div class="sticky inset-x-0 top-0 z-[1] hidden overflow-hidden bg-white h-navbar dark:bg-zinc-900 lg:block">
     <div class="flex items-center">
-      <div class="flex-grow overflow-hidden whitespace-nowrap" @wheel="handleScroll">
-        <div class="flex items-center divide-x h-navbar" ref="scrollContainerRef">
+      <div class="flex-grow px-2 overflow-hidden whitespace-nowrap" @wheel="handleScroll">
+        <div class="flex items-center h-navbar" ref="scrollContainerRef">
           <template v-for="(item, index) in appConfig.tabBarItems.filter(item => item)" :key="item.name">
             <TabBarItem
               :tab="item"

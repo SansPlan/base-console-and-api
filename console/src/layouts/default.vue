@@ -22,12 +22,11 @@ const getKeepAliveInclude = computed<string[]>(() => appConfig.tabBarItems.filte
         :trigger-style="appConfig.menubarTriggerStyle"
         content-class="py-1.5"
         class="hidden lg:flex z-[2]"
-        bordered
         style="--tw-shadow: 0 0 12px 8px rgba(0 0 0 / 0.05)"
       >
         <Menubar />
       </n-layout-sider>
-      <n-layout-content :native-scrollbar="false">
+      <n-layout-content :native-scrollbar="false" class="rounded-md">
         <TabBar v-if="appConfig.showTabBar" />
         <router-view v-slot="{ Component, route }">
           <div v-if="appConfig.refreshTabPage" :class="appConfig.showTabBar ? 'h-pageHeight2' : 'h-pageHeight'">

@@ -31,8 +31,8 @@ function handleUpdate() {
 </script>
 
 <template>
-  <main class="h-pageHeight data-[tabbar=true]:h-pageHeight2 flex">
-    <n-scrollbar class="bg-white border-r dark:bg-zinc-900 dark:border-zinc-800 w-80" content-class="px-3 py-2">
+  <main class="h-pageHeight data-[tabbar=true]:h-pageHeight2 flex py-2">
+    <n-scrollbar class="bg-white border rounded-xl dark:bg-zinc-900 w-80" content-class="px-3 py-2">
       <MenuTree :options="menuTreeData" @select="handleSelect" />
     </n-scrollbar>
     <n-scrollbar class="flex-grow" content-class="p-4 space-y-4">

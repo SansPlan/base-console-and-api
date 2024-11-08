@@ -61,8 +61,8 @@ function handleContextMenuEvent(key: string | number) {
 
 <template>
   <div
-    class="flex items-center flex-shrink-0 h-full gap-2 px-3 overflow-hidden transition cursor-pointer select-none group"
-    :class="isActive ? 'bg-zinc-200/65 dark:bg-black' : ''"
+    class="flex items-center flex-shrink-0 gap-2 px-3 overflow-hidden transition rounded-full cursor-pointer select-none group h-[calc(var(--site-tab-bar-height)-8px)]"
+    :class="isActive ? 'bg-white dark:bg-black ring-2 ring-zinc-300' : ''"
     @contextmenu="handleContextMenu"
     @click="emit('select', tab)"
   >
@@ -71,7 +71,7 @@ function handleContextMenuEvent(key: string | number) {
     <p class="text-[0.8125rem] whitespace-nowrap">{{ tab.label }}</p>
     <span
       v-if="!noClosable"
-      class="p-0.5 transition-all cursor-pointer dark:hover:bg-zinc-950 rounded -mr-1"
+      class="p-1 -mr-1 transition-all rounded-full cursor-pointer dark:hover:bg-zinc-950"
       :class="isActive ? 'scale-100 hover:bg-zinc-300' : 'scale-0 group-hover:scale-100 hover:bg-zinc-300'"
       @click.prevent="emit('close')"
     >
